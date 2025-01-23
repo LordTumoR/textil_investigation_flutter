@@ -5,44 +5,45 @@ Widget buildCaracteristicsWidget() {
     padding: const EdgeInsets.all(16.0),
     child: Center(
       child: ConstrainedBox(
-        constraints: const BoxConstraints(maxWidth: 350), // Define el ancho máximo
+        constraints:
+            const BoxConstraints(maxWidth: 350), // Define el ancho máximo
         child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const Text(
-            '¿Qué características tiene o debe tener?',
-            style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text(
+              '¿Qué características tiene o debe tener?',
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+              textAlign: TextAlign.center,
             ),
-            textAlign: TextAlign.center,
-          ),
-          const SizedBox(height: 22),
-          buildCustomButton(
-            label: 'Visuales',
-            icon: Icons.visibility,
-            onPressed: () {
-              // Acción para el botón "Visuales"
-            },
-          ),
-          const SizedBox(height: 12),
-          buildCustomButton(
-            label: 'Táctiles',
-            icon: Icons.touch_app,
-            onPressed: () {
-              // Acción para el botón "Táctiles"
-            },
-          ),
-          const SizedBox(height: 12),
-          buildCustomButton(
-            label: 'Otras',
-            icon: Icons.help_outline,
-            onPressed: () {
-              // Acción para el botón "Otras"
-            },
-          ),
-        ],
-      ),
+            const SizedBox(height: 22),
+            buildCustomButton(
+              label: 'Visuales',
+              icon: Icons.visibility,
+              onPressed: () {
+                // Acción para el botón "Visuales"
+              },
+            ),
+            const SizedBox(height: 12),
+            buildCustomButton(
+              label: 'Táctiles',
+              icon: Icons.touch_app,
+              onPressed: () {
+                // Acción para el botón "Táctiles"
+              },
+            ),
+            const SizedBox(height: 12),
+            buildCustomButton(
+              label: 'Otras',
+              icon: Icons.help_outline,
+              onPressed: () {
+                // Acción para el botón "Otras"
+              },
+            ),
+          ],
+        ),
       ),
     ),
   );
@@ -85,4 +86,3 @@ Widget buildCustomButton({
     ),
   );
 }
-
