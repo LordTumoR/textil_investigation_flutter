@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:textil_investigation/presentations/blocs/index_bloc.dart';
+import 'package:textil_investigation/presentations/blocs/index_event.dart';
 
-Widget buildCaracteristicsWidget() {
+Widget buildCaracteristicsWidget(BuildContext context) {
   return Padding(
     padding: const EdgeInsets.all(16.0),
     child: Center(
       child: ConstrainedBox(
-        constraints:
-            const BoxConstraints(maxWidth: 350), // Define el ancho máximo
+        constraints: const BoxConstraints(maxWidth: 350),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -23,7 +25,7 @@ Widget buildCaracteristicsWidget() {
               label: 'Visuales',
               icon: Icons.visibility,
               onPressed: () {
-                // Acción para el botón "Visuales"
+                context.read<IndexBloc>().add(const UpdateNumberEvent(2));
               },
             ),
             const SizedBox(height: 12),
