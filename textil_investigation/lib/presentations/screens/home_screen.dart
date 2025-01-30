@@ -6,6 +6,7 @@ import 'package:textil_investigation/presentations/blocs/index_bloc.dart';
 import 'package:textil_investigation/presentations/blocs/index_event.dart';
 import 'package:textil_investigation/presentations/navigatorBar/default_bottom_navigation_bar.dart';
 import 'package:textil_investigation/presentations/widgets/home_widget.dart';
+import 'package:textil_investigation/presentations/widgets/visuals_widget.dart';
 import 'package:textil_investigation/presentations/widgets/search_text_widget.dart';
 import 'package:textil_investigation/presentations/widgets/tactile_widget.dart';
 import 'package:textil_investigation/presentations/widgets/widget_caracteristics_request.dart';
@@ -81,7 +82,7 @@ class _HomeScreenState extends State<HomeScreen> {
       case 1:
         return buildCaracteristicsWidget(context);
       case 2:
-      //return CustomSliderWidget();
+        return const VisualsWidget();
       default:
         return const CustomScreen();
     }
