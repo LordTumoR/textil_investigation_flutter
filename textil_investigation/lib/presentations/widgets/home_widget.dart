@@ -53,9 +53,9 @@ class _CustomScreenState extends State<CustomScreen> {
                         children: [
                           ElevatedButton(
                             onPressed: () {
-                              setState(() {
-                                _showTextWidget = true;
-                              });
+                              context
+                                  .read<IndexBloc>()
+                                  .add(const UpdateNumberEvent(4));
                             },
                             style: ElevatedButton.styleFrom(
                               backgroundColor: const Color(0xFF00B0B9),

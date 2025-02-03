@@ -33,7 +33,7 @@ Widget buildCaracteristicsWidget(BuildContext context) {
               label: 'Táctiles',
               icon: Icons.touch_app,
               onPressed: () {
-                // Acción para el botón "Táctiles"
+                context.read<IndexBloc>().add(const UpdateNumberEvent(3));
               },
             ),
             const SizedBox(height: 12),

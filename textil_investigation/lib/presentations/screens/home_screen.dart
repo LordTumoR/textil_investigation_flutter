@@ -59,7 +59,7 @@ class _HomeScreenState extends State<HomeScreen> {
           appBar: DefaultAppBar(),
           body: _getBody(currentIndex),
           bottomNavigationBar: DefaultBottomNavigationBar(
-            currentIndex: currentIndex,
+            currentIndex: 1,
             onTap: (index, showCaracteristics, showText) {
               context.read<IndexBloc>().add(UpdateNumberEvent(index));
               setState(() {
@@ -83,6 +83,10 @@ class _HomeScreenState extends State<HomeScreen> {
         return buildCaracteristicsWidget(context);
       case 2:
         return const VisualsWidget();
+      case 3:
+        return const TactileWidget();
+      case 4:
+        return SearchTextWidget(fabrics: fabrics);
       default:
         return const CustomScreen();
     }
