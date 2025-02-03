@@ -10,6 +10,7 @@ import 'package:textil_investigation/presentations/widgets/visuals_widget.dart';
 import 'package:textil_investigation/presentations/widgets/search_text_widget.dart';
 import 'package:textil_investigation/presentations/widgets/tactile_widget.dart';
 import 'package:textil_investigation/presentations/widgets/widget_caracteristics_request.dart';
+import 'package:textil_investigation/presentations/widgets/widget_others_caracteristics.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -87,6 +88,8 @@ class _HomeScreenState extends State<HomeScreen> {
         return const TactileWidget();
       case 4:
         return SearchTextWidget(fabrics: fabrics);
+      case 5:
+        return const OtherCharacteristicsWidget();
       default:
         return const CustomScreen();
     }

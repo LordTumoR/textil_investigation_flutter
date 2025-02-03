@@ -41,7 +41,7 @@ Widget buildCaracteristicsWidget(BuildContext context) {
               label: 'Otras',
               icon: Icons.help_outline,
               onPressed: () {
-                // Acción para el botón "Otras"
+                context.read<IndexBloc>().add(const UpdateNumberEvent(5));
               },
             ),
           ],

@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:textil_investigation/presentations/blocs/index_bloc.dart';
+import 'package:textil_investigation/presentations/blocs/index_event.dart';
 
 class OtherCharacteristicsWidget extends StatefulWidget {
   const OtherCharacteristicsWidget({super.key});
@@ -68,7 +71,9 @@ class _OtherCharacteristicsWidgetState
         ),
         const SizedBox(height: 20),
         ElevatedButton(
-          onPressed: () {},
+          onPressed: () {
+            context.read<IndexBloc>().add(const UpdateNumberEvent(1));
+          },
           style: ElevatedButton.styleFrom(
             backgroundColor: const Color(0xFFFF00C5),
             shape: RoundedRectangleBorder(
