@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
 class DefaultBottomNavigationBar extends StatelessWidget {
   final int currentIndex;
@@ -26,11 +25,7 @@ class DefaultBottomNavigationBar extends StatelessWidget {
       onTap: (index) {
         bool updatedShowCaracteristicsWidget = showCaracteristicsWidget;
         bool updatedShowTextWidget = showTextWidget;
-        if (index == 0) {
-          updatedShowCaracteristicsWidget = false;
-          updatedShowTextWidget = false;
-          context.go('/home');
-        }
+        if (index == 0) {}
         onTap(index, updatedShowCaracteristicsWidget, updatedShowTextWidget);
       },
       items: const [
