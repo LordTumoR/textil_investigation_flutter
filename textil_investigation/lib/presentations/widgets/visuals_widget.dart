@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:textil_investigation/presentations/blocs/index_bloc.dart';
-import 'package:textil_investigation/presentations/blocs/index_event.dart';
+import 'package:textil_investigation/presentations/blocs/visual/visual_bloc.dart';
+import 'package:textil_investigation/presentations/blocs/visual/visual_event.dart';
+import 'package:textil_investigation/presentations/blocs/visual/visual_state.dart';
 
 class VisualsWidget extends StatefulWidget {
   const VisualsWidget({super.key});
@@ -13,6 +14,16 @@ class VisualsWidget extends StatefulWidget {
 class _VisualsWidgetState extends State<VisualsWidget> {
   double _transparency = 1;
   double _brightness = 1;
+
+  @override
+  void initState() {
+    super.initState();
+    final state = context.read<VisualBloc>().state;
+    if (state is VisualLoaded) {
+      _transparency = state.transparency;
+      _brightness = state.shine;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -78,7 +89,9 @@ class _VisualsWidgetState extends State<VisualsWidget> {
             ),
             const SizedBox(height: 40),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                context.read<VisualBloc>().add(UpdateNumberEvent(_transparency, _brightness));
+              },
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color(0xFF00B0B9),
                 shape: RoundedRectangleBorder(
@@ -93,7 +106,7 @@ class _VisualsWidgetState extends State<VisualsWidget> {
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                context.read<IndexBloc>().add(const UpdateNumberEvent(1));
+                context.read<VisualBloc>().add(UpdateNumberEvent(_transparency, _brightness));
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color(0xFFFF00C5),

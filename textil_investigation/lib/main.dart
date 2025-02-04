@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:textil_investigation/config/routes.dart';
 import 'package:textil_investigation/presentations/blocs/index_bloc.dart';
+import 'package:textil_investigation/presentations/blocs/visual/visual_bloc.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -13,12 +14,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => IndexBloc(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => IndexBloc()),
+        BlocProvider(create: (context) => VisualBloc()),
+      ],
       child: MaterialApp.router(
         routerConfig: router,
         debugShowCheckedModeBanner: false,
-        title: 'ProyectoFinal tracktrail',
+        title: 'Textil Investigation',
         theme: ThemeData(primarySwatch: Colors.blue),
       ),
     );

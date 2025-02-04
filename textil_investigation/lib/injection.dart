@@ -2,6 +2,7 @@ import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 import 'package:textil_investigation/presentations/blocs/index_bloc.dart';
+import 'package:textil_investigation/presentations/blocs/visual/visual_bloc.dart';
 
 final GetIt sl = GetIt.instance;
 
@@ -12,6 +13,10 @@ Future<void> configureDependencies() async {
   // );
   sl.registerFactory<IndexBloc>(
     () => IndexBloc(),
+  );
+
+  sl.registerFactory<VisualBloc>(
+    () => VisualBloc(),
   );
 
   // SharedPreferences
