@@ -13,8 +13,6 @@ class CustomScreen extends StatefulWidget {
 class _CustomScreenState extends State<CustomScreen> {
   bool knowname = false;
   bool havesample = false;
-  bool _showCaracteristicsWidget = false;
-  bool _showTextWidget = false;
 
   @override
   Widget build(BuildContext context) {
