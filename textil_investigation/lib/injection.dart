@@ -2,8 +2,7 @@ import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 import 'package:textil_investigation/presentations/blocs/index_bloc.dart';
-import 'package:textil_investigation/presentations/blocs/tactiles/tactiles_bloc.dart';
-import 'package:textil_investigation/presentations/blocs/visual/visual_bloc.dart';
+import 'package:textil_investigation/presentations/blocs/telas/telas_bloc.dart';
 
 final GetIt sl = GetIt.instance;
 
@@ -16,11 +15,8 @@ Future<void> configureDependencies() async {
     () => IndexBloc(),
   );
 
-  sl.registerFactory<VisualBloc>(
-    () => VisualBloc(),
-  );
-  sl.registerFactory<TactileBloc>(
-    () => TactileBloc(),
+  sl.registerFactory<TelasBloc>(
+    () => TelasBloc(),
   );
 
   // SharedPreferences

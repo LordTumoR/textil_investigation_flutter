@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:textil_investigation/config/routes.dart';
 import 'package:textil_investigation/presentations/blocs/index_bloc.dart';
-import 'package:textil_investigation/presentations/blocs/other/other_bloc.dart';
-import 'package:textil_investigation/presentations/blocs/tactiles/tactiles_bloc.dart';
-import 'package:textil_investigation/presentations/blocs/visual/visual_bloc.dart';
+import 'package:textil_investigation/presentations/blocs/telas/telas_bloc.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,9 +17,7 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => IndexBloc()),
-        BlocProvider(create: (context) => VisualBloc()),
-        BlocProvider(create: (context) => TactileBloc()),
-        BlocProvider(create: (context) => OtherCharacteristicsBloc()),
+        BlocProvider(create: (context) => TelasBloc()),
       ],
       child: MaterialApp.router(
         routerConfig: router,

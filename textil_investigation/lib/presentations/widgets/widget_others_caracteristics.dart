@@ -2,16 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:textil_investigation/presentations/blocs/index_bloc.dart';
 import 'package:textil_investigation/presentations/blocs/index_event.dart';
-import 'package:textil_investigation/presentations/blocs/other/other_bloc.dart';
-import 'package:textil_investigation/presentations/blocs/other/other_event.dart';
-import 'package:textil_investigation/presentations/blocs/other/other_state.dart';
+import 'package:textil_investigation/presentations/blocs/telas/telas_bloc.dart';
+import 'package:textil_investigation/presentations/blocs/telas/telas_event.dart';
+import 'package:textil_investigation/presentations/blocs/telas/telas_state.dart';
 
 class OtherCharacteristicsWidget extends StatefulWidget {
   const OtherCharacteristicsWidget({super.key});
 
   @override
-  OtherCharacteristicsWidgetState createState() =>
-      OtherCharacteristicsWidgetState();
+  OtherCharacteristicsWidgetState createState() => OtherCharacteristicsWidgetState();
 }
 
 class OtherCharacteristicsWidgetState
@@ -22,9 +21,9 @@ class OtherCharacteristicsWidgetState
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<OtherCharacteristicsBloc, OtherCharacteristicsState>(
+    return BlocBuilder<TelasBloc, TelasState>(
       builder: (context, state) {
-        if (state is OtherCharacteristicsLoaded) {
+        if (state != null) {
           isWaterResistant = state.isWaterResistant ?? false;
           isStainResistant = state.isStainResistant ?? false;
           isFireRetardant = state.isFireRetardant ?? false;
@@ -42,8 +41,8 @@ class OtherCharacteristicsWidgetState
                 setState(() {
                   isWaterResistant = value ?? false;
                 });
-                context.read<OtherCharacteristicsBloc>().add(
-                      UpdateOtherCharacteristicsEvent(
+                context.read<TelasBloc>().add(
+                      UpdateTelasEvent(
                         isWaterResistant: isWaterResistant,
                         isStainResistant: isStainResistant,
                         isFireRetardant: isFireRetardant,
@@ -60,8 +59,8 @@ class OtherCharacteristicsWidgetState
                 setState(() {
                   isStainResistant = value ?? false;
                 });
-                context.read<OtherCharacteristicsBloc>().add(
-                      UpdateOtherCharacteristicsEvent(
+                context.read<TelasBloc>().add(
+                      UpdateTelasEvent(
                         isWaterResistant: isWaterResistant,
                         isStainResistant: isStainResistant,
                         isFireRetardant: isFireRetardant,
@@ -78,8 +77,8 @@ class OtherCharacteristicsWidgetState
                 setState(() {
                   isFireRetardant = value ?? false;
                 });
-                context.read<OtherCharacteristicsBloc>().add(
-                      UpdateOtherCharacteristicsEvent(
+                context.read<TelasBloc>().add(
+                      UpdateTelasEvent(
                         isWaterResistant: isWaterResistant,
                         isStainResistant: isStainResistant,
                         isFireRetardant: isFireRetardant,
@@ -90,8 +89,8 @@ class OtherCharacteristicsWidgetState
             const SizedBox(height: 40),
             ElevatedButton(
               onPressed: () {
-                context.read<OtherCharacteristicsBloc>().add(
-                      UpdateOtherCharacteristicsEvent(
+                context.read<TelasBloc>().add(
+                      UpdateTelasEvent(
                         isWaterResistant: isWaterResistant,
                         isStainResistant: isStainResistant,
                         isFireRetardant: isFireRetardant,
@@ -112,8 +111,8 @@ class OtherCharacteristicsWidgetState
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                context.read<OtherCharacteristicsBloc>().add(
-                      UpdateOtherCharacteristicsEvent(
+                context.read<TelasBloc>().add(
+                      UpdateTelasEvent(
                         isWaterResistant: isWaterResistant,
                         isStainResistant: isStainResistant,
                         isFireRetardant: isFireRetardant,
