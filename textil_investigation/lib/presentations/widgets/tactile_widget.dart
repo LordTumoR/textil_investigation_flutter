@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:textil_investigation/presentations/blocs/tactiles/tactiles_bloc.dart';
-import 'package:textil_investigation/presentations/blocs/tactiles/tactiles_event.dart';
-import 'package:textil_investigation/presentations/blocs/tactiles/tactiles_state.dart';
+import 'package:textil_investigation/presentations/blocs/telas/telas_bloc.dart';
+import 'package:textil_investigation/presentations/blocs/telas/telas_event.dart';
+import 'package:textil_investigation/presentations/blocs/telas/telas_state.dart';
 
 class TactileWidget extends StatelessWidget {
   const TactileWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<TactileBloc, TactileState>(
+    return BlocBuilder<TelasBloc, TelasState>(
       builder: (context, state) {
         return Center(
           child: ConstrainedBox(
@@ -28,8 +28,8 @@ class TactileWidget extends StatelessWidget {
                   label: 'Resistencia',
                   value: state.endurance,
                   onChanged: (value) {
-                    context.read<TactileBloc>().add(
-                          UpdateTactileValues(
+                    context.read<TelasBloc>().add(
+                          UpdateTelasEvent(
                             endurance: value,
                             absorption: state.absorption,
                             elasticity: state.elasticity,
@@ -42,8 +42,8 @@ class TactileWidget extends StatelessWidget {
                   label: 'Absorción',
                   value: state.absorption,
                   onChanged: (value) {
-                    context.read<TactileBloc>().add(
-                          UpdateTactileValues(
+                    context.read<TelasBloc>().add(
+                          UpdateTelasEvent(
                             endurance: state.endurance,
                             absorption: value,
                             elasticity: state.elasticity,
@@ -56,8 +56,8 @@ class TactileWidget extends StatelessWidget {
                   label: 'Elasticidad',
                   value: state.elasticity,
                   onChanged: (value) {
-                    context.read<TactileBloc>().add(
-                          UpdateTactileValues(
+                    context.read<TelasBloc>().add(
+                          UpdateTelasEvent(
                             endurance: state.endurance,
                             absorption: state.absorption,
                             elasticity: value,
@@ -82,8 +82,8 @@ class TactileWidget extends StatelessWidget {
                 const SizedBox(height: 20),
                 ElevatedButton(
                   onPressed: () {
-                    context.read<TactileBloc>().add(
-                          UpdateTactileValues(
+                    context.read<TelasBloc>().add(
+                          UpdateTelasEvent(
                             endurance: state.endurance,
                             absorption: state.absorption,
                             elasticity: state.elasticity,
