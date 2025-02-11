@@ -23,11 +23,15 @@ class OtherCharacteristicsWidgetState
   Widget build(BuildContext context) {
     return BlocBuilder<TelasBloc, TelasState>(
       builder: (context, state) {
-        if (state != null) {
-          isWaterResistant = state.isWaterResistant ?? false;
-          isStainResistant = state.isStainResistant ?? false;
-          isFireRetardant = state.isFireRetardant ?? false;
-        }
+      bool isWaterResistant = false;
+      bool isStainResistant = false;
+      bool isFireRetardant = false;
+
+      if (state is TelasLoaded) {
+        isWaterResistant = state.isWaterResistant ?? false;
+        isStainResistant = state.isStainResistant ?? false;
+        isFireRetardant = state.isFireRetardant ?? false;
+      }
 
         return Column(
           mainAxisSize: MainAxisSize.min,

@@ -1,12 +1,11 @@
 import 'package:equatable/equatable.dart';
 
 abstract class TelasEvent extends Equatable {
-  const TelasEvent();
-
   @override
   List<Object?> get props => [];
 }
 
+/// ✅ **Evento para actualizar los filtros**
 class UpdateTelasEvent extends TelasEvent {
   final double? transparency;
   final double? shine;
@@ -17,7 +16,7 @@ class UpdateTelasEvent extends TelasEvent {
   final bool? isStainResistant;
   final bool? isFireRetardant;
 
-  const UpdateTelasEvent({
+  UpdateTelasEvent({
     this.transparency,
     this.shine,
     this.endurance,
@@ -39,4 +38,14 @@ class UpdateTelasEvent extends TelasEvent {
         isStainResistant,
         isFireRetardant,
       ];
+}
+
+/// ✅ **Evento para hacer la búsqueda de telas filtradas**
+class FetchFilteredTelasEvent extends TelasEvent {
+  final Map<String, dynamic> filters;
+
+  FetchFilteredTelasEvent({required this.filters});
+
+  @override
+  List<Object?> get props => [filters];
 }

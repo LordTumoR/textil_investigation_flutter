@@ -1,28 +1,46 @@
 import 'package:equatable/equatable.dart';
+import 'package:textil_investigation/domain/entities/tela_entity.dart';
 
-class TelasState extends Equatable {
-  final double transparency;
-  final double shine;
-  final double endurance;
-  final double absorption;
-  final double elasticity;
-  final bool isWaterResistant;
-  final bool isStainResistant;
-  final bool isFireRetardant;
+/// ✅ **Estado base del Bloc**
+abstract class TelasState extends Equatable {
+  const TelasState();
 
-  const TelasState({
-    this.transparency = 1.0,
-    this.shine = 1.0, 
-    this.endurance = 1.0,
-    this.absorption = 1.0,
-    this.elasticity = 1.0,
-    this.isWaterResistant = false,
-    this.isStainResistant = false,
-    this.isFireRetardant = false,
+  @override
+  List<Object?> get props => [];
+}
+
+/// ✅ **Estado inicial del Bloc**
+class TelasInitial extends TelasState {}
+
+/// ✅ **Estado cuando se están cargando los datos**
+class TelasLoading extends TelasState {}
+
+/// ✅ **Estado que almacena los datos de las telas y los filtros aplicados**
+class TelasLoaded extends TelasState {
+  final double? transparency;
+  final double? shine;
+  final double? endurance;
+  final double? absorption;
+  final double? elasticity;
+  final bool? isWaterResistant;
+  final bool? isStainResistant;
+  final bool? isFireRetardant;
+  final List<TelaEntity>? telas;
+
+  const TelasLoaded({
+    this.transparency,
+    this.shine,
+    this.endurance,
+    this.absorption,
+    this.elasticity,
+    this.isWaterResistant,
+    this.isStainResistant,
+    this.isFireRetardant,
+    this.telas,
   });
 
   @override
-  List<Object> get props => [
+  List<Object?> get props => [
         transparency,
         shine,
         endurance,
@@ -31,5 +49,16 @@ class TelasState extends Equatable {
         isWaterResistant,
         isStainResistant,
         isFireRetardant,
+        telas,
       ];
+}
+
+/// ✅ **Estado cuando ocurre un error**
+class TelasError extends TelasState {
+  final String message;
+
+  const TelasError(this.message);
+
+  @override
+  List<Object?> get props => [message];
 }

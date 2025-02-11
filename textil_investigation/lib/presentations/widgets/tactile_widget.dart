@@ -11,6 +11,16 @@ class TactileWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<TelasBloc, TelasState>(
       builder: (context, state) {
+        double endurance = 1.0;
+        double absorption = 1.0;
+        double elasticity = 1.0;
+
+        if (state is TelasLoaded) {
+          endurance = state.endurance ?? 1.0;
+          absorption = state.absorption ?? 1.0;
+          elasticity = state.elasticity ?? 1.0;
+        }
+
         return Center(
           child: ConstrainedBox(
             constraints: BoxConstraints(
@@ -26,48 +36,46 @@ class TactileWidget extends StatelessWidget {
                 _buildSlider(
                   context,
                   label: 'Resistencia',
-                  value: state.endurance,
+                  value: endurance,
                   onChanged: (value) {
                     context.read<TelasBloc>().add(
-                          UpdateTelasEvent(
-                            endurance: value,
-                            absorption: state.absorption,
-                            elasticity: state.elasticity,
-                          ),
+                          UpdateTelasEvent(endurance: value),
                         );
                   },
                 ),
                 _buildSlider(
                   context,
                   label: 'Absorción',
-                  value: state.absorption,
+                  value: absorption,
                   onChanged: (value) {
                     context.read<TelasBloc>().add(
-                          UpdateTelasEvent(
-                            endurance: state.endurance,
-                            absorption: value,
-                            elasticity: state.elasticity,
-                          ),
+                          UpdateTelasEvent(absorption: value),
                         );
                   },
                 ),
                 _buildSlider(
                   context,
                   label: 'Elasticidad',
-                  value: state.elasticity,
+                  value: elasticity,
                   onChanged: (value) {
                     context.read<TelasBloc>().add(
-                          UpdateTelasEvent(
-                            endurance: state.endurance,
-                            absorption: state.absorption,
-                            elasticity: value,
-                          ),
+                          UpdateTelasEvent(elasticity: value),
                         );
                   },
                 ),
                 const SizedBox(height: 40),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    context.read<TelasBloc>().add(
+                          FetchFilteredTelasEvent(
+                            filters: {
+                              'endurance': endurance,
+                              'absorption': absorption,
+                              'elasticity': elasticity,
+                            },
+                          ),
+                        );
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFF00B0B9),
                     shape: RoundedRectangleBorder(
@@ -84,9 +92,9 @@ class TactileWidget extends StatelessWidget {
                   onPressed: () {
                     context.read<TelasBloc>().add(
                           UpdateTelasEvent(
-                            endurance: state.endurance,
-                            absorption: state.absorption,
-                            elasticity: state.elasticity,
+                            endurance: endurance,
+                            absorption: absorption,
+                            elasticity: elasticity,
                           ),
                         );
                   },

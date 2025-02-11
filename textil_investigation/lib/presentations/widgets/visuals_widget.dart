@@ -15,13 +15,15 @@ class _VisualsWidgetState extends State<VisualsWidget> {
   double transparency = 1;
   double brightness = 1;
 
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    final state = context.watch<TelasBloc>().state;
-    transparency = state.transparency;
-    brightness = state.shine;
-  }
+    @override
+    void didChangeDependencies() {
+      super.didChangeDependencies();
+      final state = context.watch<TelasBloc>().state;
+      if (state is TelasLoaded) {
+        transparency = state.transparency ?? 1.0;
+        brightness = state.shine ?? 1.0;
+      }
+    }
 
   @override
   Widget build(BuildContext context) {
