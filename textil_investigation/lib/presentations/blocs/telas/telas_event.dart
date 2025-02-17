@@ -14,24 +14,20 @@ class UpdateTelasEvent extends TelasEvent {
   final double? endurance;
   final double? absorption;
   final double? elasticity;
-  final bool? isWaterResistant;
-  final bool? isStainResistant;
-  final bool? isFireRetardant;
+  final int? composition;
+
   final bool? isAnadirOrBuscar;
 
-  UpdateTelasEvent({
-    this.name,
-    this.transparency,
-    this.shine,
-    this.touch,
-    this.endurance,
-    this.absorption,
-    this.elasticity,
-    this.isWaterResistant,
-    this.isStainResistant,
-    this.isFireRetardant,
-    this.isAnadirOrBuscar,
-  });
+  UpdateTelasEvent(
+      {this.name,
+      this.transparency,
+      this.shine,
+      this.touch,
+      this.endurance,
+      this.absorption,
+      this.elasticity,
+      this.isAnadirOrBuscar,
+      this.composition});
 
   @override
   List<Object?> get props => [
@@ -42,10 +38,8 @@ class UpdateTelasEvent extends TelasEvent {
         endurance,
         absorption,
         elasticity,
-        isWaterResistant,
-        isStainResistant,
-        isFireRetardant,
         isAnadirOrBuscar,
+        composition,
       ];
 }
 

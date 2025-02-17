@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:textil_investigation/domain/usecases/fetch_filtered_telas_usecase.dart';
+
 import 'telas_event.dart';
 import 'telas_state.dart';
 
@@ -25,14 +26,8 @@ class TelasBloc extends Bloc<TelasEvent, TelasState> {
           endurance: event.endurance ?? currentState.endurance,
           absorption: event.absorption ?? currentState.absorption,
           elasticity: event.elasticity ?? currentState.elasticity,
-          isWaterResistant:
-              event.isWaterResistant ?? currentState.isWaterResistant,
-          isStainResistant:
-              event.isStainResistant ?? currentState.isStainResistant,
-          isFireRetardant:
-              event.isFireRetardant ?? currentState.isFireRetardant,
+          composition: event.composition ?? currentState.composition,
           telas: currentState.telas,
-          isAnadirOrBuscar: event.isAnadirOrBuscar ?? false,
         ),
       );
 
@@ -43,13 +38,7 @@ class TelasBloc extends Bloc<TelasEvent, TelasState> {
         'touch': event.touch ?? currentState.touch,
         'endurance': event.endurance ?? currentState.endurance,
         'absorption': event.absorption ?? currentState.absorption,
-        'elasticity': event.elasticity ?? currentState.elasticity,
-        'isWaterResistant':
-            event.isWaterResistant ?? currentState.isWaterResistant,
-        'isStainResistant':
-            event.isStainResistant ?? currentState.isStainResistant,
-        'isFireRetardant':
-            event.isFireRetardant ?? currentState.isFireRetardant,
+        'elasticity': event.elasticity ?? currentState.elasticity
       };
 
       if (event.isAnadirOrBuscar == true) {
@@ -63,11 +52,8 @@ class TelasBloc extends Bloc<TelasEvent, TelasState> {
             endurance: currentState.endurance,
             absorption: currentState.absorption,
             elasticity: currentState.elasticity,
-            isWaterResistant: currentState.isWaterResistant,
-            isStainResistant: currentState.isStainResistant,
-            isFireRetardant: currentState.isFireRetardant,
-            telas: telas,
-            isAnadirOrBuscar: currentState.isAnadirOrBuscar,
+            composition: currentState.composition,
+            telas: telas, // Guarda las telas obtenidas en el estado
           ),
         );
       }

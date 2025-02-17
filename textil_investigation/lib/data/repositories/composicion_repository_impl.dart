@@ -1,0 +1,14 @@
+import 'package:textil_investigation/data/datasources/composicion_remote_datasource.dart';
+import 'package:textil_investigation/domain/entities/composicion_entity.dart';
+import 'package:textil_investigation/domain/repositories/composicion_repository.dart';
+
+class ComposicionRepositoryImpl implements ComposicionRepository {
+  final ComposicionRemoteDataSource remoteDataSource;
+
+  ComposicionRepositoryImpl({required this.remoteDataSource});
+
+  @override
+  Future<List<ComposicionEntity>> fetchComposicion() async {
+    return await remoteDataSource.fetchComposicion();
+  }
+}

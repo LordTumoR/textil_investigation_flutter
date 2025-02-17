@@ -1,4 +1,6 @@
 import 'dart:convert';
+
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 import 'package:textil_investigation/data/models/tela_model.dart';
 
@@ -8,12 +10,16 @@ abstract class TelasRemoteDataSource {
 
 class TelasRemoteDataSourceImpl implements TelasRemoteDataSource {
   final http.Client client;
+  String apiUrl = dotenv.env['direccionApi'] ?? 'localhost';
+  String apiPort = dotenv.env['puertoApi'] ?? '3000';
 
   TelasRemoteDataSourceImpl({required this.client});
 
   @override
   Future<List<TelaModel>> fetchFilteredTelas(
       Map<String, dynamic> filters) async {
+    final uri = Uri.parse('http://$apiUrl:$apiPort/telas/filter/telas');
+
     // Construimos el objeto de filtros aquí
     final Map<String, dynamic> filterParams = {
       "denominacion": filters['name'] ?? null,
@@ -27,8 +33,6 @@ class TelasRemoteDataSourceImpl implements TelasRemoteDataSource {
       "transparency": filters['transparency'] ?? null,
       "brightness": filters['brightness'] ?? null,
     };
-
-    final uri = Uri.parse('http://localhost:8000/telas/filter/telas');
     final response = await client.post(
       uri,
       headers: {'Content-Type': 'application/json'},

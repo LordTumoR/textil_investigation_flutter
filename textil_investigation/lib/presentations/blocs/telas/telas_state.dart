@@ -28,10 +28,8 @@ class TelasLoaded extends TelasState {
   final double? endurance;
   final double? absorption;
   final double? elasticity;
-  final bool? isWaterResistant;
-  final bool? isStainResistant;
-  final bool? isFireRetardant;
-  final bool? isAnadirOrBuscar;
+  final int? composition;
+
   final List<TelaEntity>? telas;
 
   const TelasLoaded({
@@ -42,10 +40,8 @@ class TelasLoaded extends TelasState {
     this.endurance,
     this.absorption,
     this.elasticity,
-    this.isWaterResistant,
-    this.isStainResistant,
-    this.isFireRetardant,
-    this.isAnadirOrBuscar,
+    this.composition,
+
     this.telas,
   });
 
@@ -58,9 +54,7 @@ class TelasLoaded extends TelasState {
         endurance,
         absorption,
         elasticity,
-        isWaterResistant,
-        isStainResistant,
-        isFireRetardant,
+        composition,
         telas,
       ];
 }

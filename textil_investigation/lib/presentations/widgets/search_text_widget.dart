@@ -90,10 +90,13 @@ class _SearchTextWidgetState extends State<SearchTextWidget> {
                           style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 16,
-                          ),
-                        ),
-                        ),
-                      );
+                          onTap: () {
+                            // showFabricDialog(context, {
+                            //   'name': fabric.name,
+                            //   'otherData': 'Otros detalles de la tela'
+                            // });
+                          },
+                        );
                       },
                     );
                   } else if (state is TelasError) {
