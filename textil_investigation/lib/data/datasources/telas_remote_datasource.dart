@@ -28,7 +28,7 @@ class TelasRemoteDataSourceImpl implements TelasRemoteDataSource {
       "brightness": filters['brightness'] ?? null,
     };
 
-    final uri = Uri.parse('http://192.168.1.129:8000/telas/filter/telas');
+    final uri = Uri.parse('http://localhost:8000/telas/filter/telas');
     final response = await client.post(
       uri,
       headers: {'Content-Type': 'application/json'},

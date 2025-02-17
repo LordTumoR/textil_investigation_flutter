@@ -3,10 +3,14 @@ import 'package:textil_investigation/domain/entities/tela_entity.dart';
 
 /// ✅ **Estado base del Bloc**
 abstract class TelasState extends Equatable {
-  const TelasState();
+  const TelasState({this.telas = const []});
+
+  final List<TelaEntity>? telas;
+
+  // existing fields and methods
 
   @override
-  List<Object?> get props => [];
+  List<Object?> get props => [telas];
 }
 
 /// ✅ **Estado inicial del Bloc**
@@ -61,7 +65,6 @@ class TelasLoaded extends TelasState {
       ];
 }
 
-
 /// ✅ **Estado cuando ocurre un error**
 class TelasError extends TelasState {
   final String message;
@@ -71,4 +74,3 @@ class TelasError extends TelasState {
   @override
   List<Object?> get props => [message];
 }
-
