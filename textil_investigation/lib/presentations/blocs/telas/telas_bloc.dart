@@ -6,13 +6,13 @@ import 'telas_state.dart';
 class TelasBloc extends Bloc<TelasEvent, TelasState> {
   final FetchFilteredTelasUseCase fetchFilteredTelasUseCase;
 
-  TelasBloc({required this.fetchFilteredTelasUseCase}) : super(const TelasLoaded()) {
+  TelasBloc({required this.fetchFilteredTelasUseCase})
+      : super(const TelasLoaded()) {
     on<UpdateTelasEvent>(_onUpdateTelas);
-    on<FetchFilteredTelasEvent>(_onFetchFilteredTelas);
   }
 
-  /// ✅ **Actualiza los valores de los filtros sin afectar otros valores**
-  Future<void> _onUpdateTelas(UpdateTelasEvent event, Emitter<TelasState> emit) async {
+  Future<void> _onUpdateTelas(
+      UpdateTelasEvent event, Emitter<TelasState> emit) async {
     if (state is TelasLoaded) {
       final currentState = state as TelasLoaded;
 
@@ -23,23 +23,33 @@ class TelasBloc extends Bloc<TelasEvent, TelasState> {
           endurance: event.endurance ?? currentState.endurance,
           absorption: event.absorption ?? currentState.absorption,
           elasticity: event.elasticity ?? currentState.elasticity,
-          isWaterResistant: event.isWaterResistant ?? currentState.isWaterResistant,
-          isStainResistant: event.isStainResistant ?? currentState.isStainResistant,
-          isFireRetardant: event.isFireRetardant ?? currentState.isFireRetardant,
-          telas: currentState.telas, // Mantiene las telas obtenidas anteriormente
+          isWaterResistant:
+              event.isWaterResistant ?? currentState.isWaterResistant,
+          isStainResistant:
+              event.isStainResistant ?? currentState.isStainResistant,
+          isFireRetardant:
+              event.isFireRetardant ?? currentState.isFireRetardant,
+          telas: currentState.telas,
+          isAnadirOrBuscar: event.isAnadirOrBuscar ?? false,
         ),
       );
-    }
-  }
 
-  /// ✅ **Hace la petición para obtener telas filtradas y actualiza el estado**
-  Future<void> _onFetchFilteredTelas(
-      FetchFilteredTelasEvent event, Emitter<TelasState> emit) async {
-    emit(TelasLoading());
-    try {
-      final telas = await fetchFilteredTelasUseCase(event.filters);
-      if (state is TelasLoaded) {
-        final currentState = state as TelasLoaded;
+      final filters = {
+        'transparency': event.transparency ?? currentState.transparency,
+        'brightness': event.shine ?? currentState.shine,
+        'endurance': event.endurance ?? currentState.endurance,
+        'absorption': event.absorption ?? currentState.absorption,
+        'elasticity': event.elasticity ?? currentState.elasticity,
+        'isWaterResistant':
+            event.isWaterResistant ?? currentState.isWaterResistant,
+        'isStainResistant':
+            event.isStainResistant ?? currentState.isStainResistant,
+        'isFireRetardant':
+            event.isFireRetardant ?? currentState.isFireRetardant,
+      };
+
+      if (event.isAnadirOrBuscar == true) {
+        final telas = await fetchFilteredTelasUseCase(filters);
         emit(
           TelasLoaded(
             transparency: currentState.transparency,
@@ -50,14 +60,11 @@ class TelasBloc extends Bloc<TelasEvent, TelasState> {
             isWaterResistant: currentState.isWaterResistant,
             isStainResistant: currentState.isStainResistant,
             isFireRetardant: currentState.isFireRetardant,
-            telas: telas, // Guarda las telas obtenidas en el estado
+            telas: telas,
+            isAnadirOrBuscar: currentState.isAnadirOrBuscar,
           ),
         );
-      } else {
-        emit(TelasLoaded(telas: telas));
       }
-    } catch (e) {
-      emit(TelasError('Error al obtener telas'));
     }
   }
 }
