@@ -58,6 +58,7 @@ class TelasLoaded extends TelasState {
       ];
 }
 
+
 /// ✅ **Estado cuando ocurre un error**
 class TelasError extends TelasState {
   final String message;
@@ -67,3 +68,4 @@ class TelasError extends TelasState {
   @override
   List<Object?> get props => [message];
 }
+

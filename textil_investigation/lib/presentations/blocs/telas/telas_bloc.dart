@@ -20,6 +20,7 @@ class TelasBloc extends Bloc<TelasEvent, TelasState> {
         TelasLoaded(
           transparency: event.transparency ?? currentState.transparency,
           shine: event.shine ?? currentState.shine,
+          touch: event.touch ?? currentState.touch,
           endurance: event.endurance ?? currentState.endurance,
           absorption: event.absorption ?? currentState.absorption,
           elasticity: event.elasticity ?? currentState.elasticity,
@@ -37,6 +38,7 @@ class TelasBloc extends Bloc<TelasEvent, TelasState> {
       final filters = {
         'transparency': event.transparency ?? currentState.transparency,
         'brightness': event.shine ?? currentState.shine,
+        'touch': event.touch ?? currentState.touch,
         'endurance': event.endurance ?? currentState.endurance,
         'absorption': event.absorption ?? currentState.absorption,
         'elasticity': event.elasticity ?? currentState.elasticity,
@@ -54,6 +56,7 @@ class TelasBloc extends Bloc<TelasEvent, TelasState> {
           TelasLoaded(
             transparency: currentState.transparency,
             shine: currentState.shine,
+            touch: currentState.touch,
             endurance: currentState.endurance,
             absorption: currentState.absorption,
             elasticity: currentState.elasticity,

@@ -9,6 +9,7 @@ abstract class TelasEvent extends Equatable {
 class UpdateTelasEvent extends TelasEvent {
   final double? transparency;
   final double? shine;
+  final double? touch;
   final double? endurance;
   final double? absorption;
   final double? elasticity;
@@ -20,6 +21,7 @@ class UpdateTelasEvent extends TelasEvent {
   UpdateTelasEvent({
     this.transparency,
     this.shine,
+    this.touch,
     this.endurance,
     this.absorption,
     this.elasticity,
@@ -33,6 +35,7 @@ class UpdateTelasEvent extends TelasEvent {
   List<Object?> get props => [
         transparency,
         shine,
+        touch,
         endurance,
         absorption,
         elasticity,

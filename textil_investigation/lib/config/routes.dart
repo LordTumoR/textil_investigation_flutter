@@ -1,6 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:textil_investigation/presentations/screens/home_screen.dart';
 import 'package:textil_investigation/presentations/screens/start_screen.dart';
+import 'package:textil_investigation/presentations/screens/telas_screen.dart';
 
 final GoRouter router = GoRouter(
   initialLocation: '/start',
@@ -12,23 +13,12 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: '/home',
       builder: (context, state) => const HomeScreen(),
+      routes: [
+        GoRoute(
+          path: '/visuals',
+          builder: (context, state) => const TelaScreen(),
+        )
+      ],
     ),
-
-    // GoRoute(
-    //   path: 'no-name',
-    //   builder: (context, state) => NoNameScreen(),
-    // ),
-    // GoRoute(
-    //   path: 'have-sample',
-    //   builder: (context, state) => HaveSampleScreen(),
-    // ),
-    // GoRoute(
-    //   path: 'no-sample',
-    //   builder: (context, state) => NoSampleScreen(),
-    // ),
-    // GoRoute(
-    //   path: 'characteristics',
-    //   builder: (context, state) => CharacteristicsScreen(),
-    // ),
   ],
 );
