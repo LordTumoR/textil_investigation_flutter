@@ -1,19 +1,21 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:textil_investigation/domain/entities/tela_entity.dart';
 import 'package:textil_investigation/domain/usecases/fetch_filtered_telas_usecase.dart';
+
 import 'telas_event.dart';
 import 'telas_state.dart';
 
 class TelasBloc extends Bloc<TelasEvent, TelasState> {
   final FetchFilteredTelasUseCase fetchFilteredTelasUseCase;
 
-  TelasBloc({required this.fetchFilteredTelasUseCase}) : super(const TelasLoaded()) {
+  TelasBloc({required this.fetchFilteredTelasUseCase})
+      : super(const TelasLoaded()) {
     on<UpdateTelasEvent>(_onUpdateTelas);
     on<FetchFilteredTelasEvent>(_onFetchFilteredTelas);
   }
 
   /// ✅ **Actualiza los valores de los filtros sin afectar otros valores**
-  Future<void> _onUpdateTelas(UpdateTelasEvent event, Emitter<TelasState> emit) async {
+  Future<void> _onUpdateTelas(
+      UpdateTelasEvent event, Emitter<TelasState> emit) async {
     if (state is TelasLoaded) {
       final currentState = state as TelasLoaded;
 
@@ -24,10 +26,9 @@ class TelasBloc extends Bloc<TelasEvent, TelasState> {
           endurance: event.endurance ?? currentState.endurance,
           absorption: event.absorption ?? currentState.absorption,
           elasticity: event.elasticity ?? currentState.elasticity,
-          isWaterResistant: event.isWaterResistant ?? currentState.isWaterResistant,
-          isStainResistant: event.isStainResistant ?? currentState.isStainResistant,
-          isFireRetardant: event.isFireRetardant ?? currentState.isFireRetardant,
-          telas: currentState.telas, // Mantiene las telas obtenidas anteriormente
+          composition: event.composition ?? currentState.composition,
+          telas:
+              currentState.telas, // Mantiene las telas obtenidas anteriormente
         ),
       );
     }
@@ -48,9 +49,7 @@ class TelasBloc extends Bloc<TelasEvent, TelasState> {
             endurance: currentState.endurance,
             absorption: currentState.absorption,
             elasticity: currentState.elasticity,
-            isWaterResistant: currentState.isWaterResistant,
-            isStainResistant: currentState.isStainResistant,
-            isFireRetardant: currentState.isFireRetardant,
+            composition: currentState.composition,
             telas: telas, // Guarda las telas obtenidas en el estado
           ),
         );

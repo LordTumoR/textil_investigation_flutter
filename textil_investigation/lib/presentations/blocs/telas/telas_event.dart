@@ -12,9 +12,7 @@ class UpdateTelasEvent extends TelasEvent {
   final double? endurance;
   final double? absorption;
   final double? elasticity;
-  final bool? isWaterResistant;
-  final bool? isStainResistant;
-  final bool? isFireRetardant;
+  final int? composition;
 
   UpdateTelasEvent({
     this.transparency,
@@ -22,9 +20,7 @@ class UpdateTelasEvent extends TelasEvent {
     this.endurance,
     this.absorption,
     this.elasticity,
-    this.isWaterResistant,
-    this.isStainResistant,
-    this.isFireRetardant,
+    this.composition,
   });
 
   @override
@@ -34,9 +30,7 @@ class UpdateTelasEvent extends TelasEvent {
         endurance,
         absorption,
         elasticity,
-        isWaterResistant,
-        isStainResistant,
-        isFireRetardant,
+        composition,
       ];
 }
 
