@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:textil_investigation/config/routes.dart';
 import 'package:textil_investigation/injection.dart';
+import 'package:textil_investigation/presentations/blocs/composicion/composicion_bloc.dart';
 import 'package:textil_investigation/presentations/blocs/index_bloc.dart';
 import 'package:textil_investigation/presentations/blocs/telas/telas_bloc.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await configureDependencies(); 
+  await configureDependencies();
+  await dotenv.load(fileName: ".env");
 
   runApp(const MyApp());
 }
@@ -21,6 +24,7 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(create: (context) => sl<IndexBloc>()),
         BlocProvider(create: (context) => sl<TelasBloc>()),
+        BlocProvider(create: (context) => sl<ComposicionBloc>())
       ],
       child: MaterialApp.router(
         routerConfig: router,
