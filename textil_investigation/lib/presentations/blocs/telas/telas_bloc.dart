@@ -27,9 +27,7 @@ class TelasBloc extends Bloc<TelasEvent, TelasState> {
           absorption: event.absorption ?? currentState.absorption,
           elasticity: event.elasticity ?? currentState.elasticity,
           composition: event.composition ?? currentState.composition,
-          telas:
-              currentState.telas, // Mantiene las telas obtenidas anteriormente
-
+          telas: currentState.telas,
         ),
       );
 
@@ -40,13 +38,7 @@ class TelasBloc extends Bloc<TelasEvent, TelasState> {
         'touch': event.touch ?? currentState.touch,
         'endurance': event.endurance ?? currentState.endurance,
         'absorption': event.absorption ?? currentState.absorption,
-        'elasticity': event.elasticity ?? currentState.elasticity,
-        'isWaterResistant':
-            event.isWaterResistant ?? currentState.isWaterResistant,
-        'isStainResistant':
-            event.isStainResistant ?? currentState.isStainResistant,
-        'isFireRetardant':
-            event.isFireRetardant ?? currentState.isFireRetardant,
+        'elasticity': event.elasticity ?? currentState.elasticity
       };
 
       if (event.isAnadirOrBuscar == true) {
@@ -62,7 +54,6 @@ class TelasBloc extends Bloc<TelasEvent, TelasState> {
             elasticity: currentState.elasticity,
             composition: currentState.composition,
             telas: telas, // Guarda las telas obtenidas en el estado
-
           ),
         );
       }

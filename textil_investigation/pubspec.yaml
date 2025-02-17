@@ -38,3 +38,4 @@ flutter:
     - assets/backwithout.png
     - assets/maquinacoser.png
     - assets/imperdible.png
+    - .env

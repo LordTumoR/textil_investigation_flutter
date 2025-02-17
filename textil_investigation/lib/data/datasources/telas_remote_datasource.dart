@@ -10,15 +10,14 @@ abstract class TelasRemoteDataSource {
 
 class TelasRemoteDataSourceImpl implements TelasRemoteDataSource {
   final http.Client client;
-  String apiUrl = dotenv.env['direccion_api'] ?? 'localhost';
-  String apiPort = dotenv.env['puerto_api'] ?? '3000';
+  String apiUrl = dotenv.env['direccionApi'] ?? 'localhost';
+  String apiPort = dotenv.env['puertoApi'] ?? '3000';
 
   TelasRemoteDataSourceImpl({required this.client});
 
   @override
   Future<List<TelaModel>> fetchFilteredTelas(
       Map<String, dynamic> filters) async {
-
     final uri = Uri.parse('http://$apiUrl:$apiPort/telas/filter/telas');
 
     // Construimos el objeto de filtros aquí

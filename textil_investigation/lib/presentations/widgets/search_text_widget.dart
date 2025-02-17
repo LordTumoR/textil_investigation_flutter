@@ -88,6 +88,12 @@ class _SearchTextWidgetState extends State<SearchTextWidget> {
                               fontSize: 16,
                             ),
                           ),
+                          onTap: () {
+                            // showFabricDialog(context, {
+                            //   'name': fabric.name,
+                            //   'otherData': 'Otros detalles de la tela'
+                            // });
+                          },
                         );
                       },
                     );

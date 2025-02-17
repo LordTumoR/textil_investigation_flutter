@@ -10,8 +10,8 @@ abstract class ComposicionRemoteDataSource {
 
 class ComposicionRemoteDataSourceImpl implements ComposicionRemoteDataSource {
   final http.Client client;
-  String apiUrl = dotenv.env['direccion_api'] ?? 'localhost';
-  String apiPort = dotenv.env['puerto_api'] ?? '3000';
+  String apiUrl = dotenv.env['direccionApi'] ?? 'localhost';
+  String apiPort = dotenv.env['puertoApi'] ?? '3000';
 
   ComposicionRemoteDataSourceImpl({required this.client});
 
