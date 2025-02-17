@@ -17,14 +17,10 @@ class _TelaScreenState extends State<TelaScreen> {
     return BlocBuilder<TelasBloc, TelasState>(
       builder: (context, state) {
         if (state is TelasLoading) {
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
+          return const Center(child: CircularProgressIndicator());
         } else if (state is TelasLoaded) {
           if (state.telas!.isEmpty) {
-            return const Center(
-              child: Text('No telas available'),
-            );
+            return const Center(child: Text('No telas available'));
           } else {
             return Scaffold(
               appBar: DefaultAppBar(),
@@ -33,21 +29,21 @@ class _TelaScreenState extends State<TelaScreen> {
                 itemBuilder: (context, index) {
                   final tela = state.telas![index];
                   return ListTile(
+                    leading: tela.img != null
+                        ? Image.network(tela.img!)
+                        : const Icon(Icons.image_not_supported),
                     title: Text(tela.denominacion),
-                    onTap: () {
-                        
-                    },
+                    onTap: () {},
                   );
                 },
               ),
             );
           }
         } else if (state is TelasError) {
-          return const Center(
-            child: Text('Failed to load telas'),
-          );
-        } else {}
-        return Container();
+          return const Center(child: Text('Failed to load telas'));
+        } else {
+          return Container();
+        }
       },
     );
   }

@@ -5,10 +5,15 @@ import 'package:textil_investigation/domain/repositories/composicion_repository.
 class ComposicionRepositoryImpl implements ComposicionRepository {
   final ComposicionRemoteDataSource remoteDataSource;
 
-  ComposicionRepositoryImpl({required this.remoteDataSource});
+  ComposicionRepositoryImpl(this.remoteDataSource);
 
   @override
   Future<List<ComposicionEntity>> fetchComposicion() async {
-    return await remoteDataSource.fetchComposicion();
+    try {
+      final composicionModels = await remoteDataSource.fetchComposicion();
+      return composicionModels.toList();
+    } catch (e) {
+      throw Exception('Error al cargar composiciones');
+    }
   }
 }
