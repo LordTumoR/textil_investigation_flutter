@@ -1,10 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:textil_investigation/domain/entities/tela_entity.dart';
+import 'package:textil_investigation/presentations/blocs/telas/telas_bloc.dart';
 
-class TelaDetailScreen extends StatelessWidget {
-  final TelaEntity tela;
+class TelaDetailScreen extends StatefulWidget {
+  final int telaId;
 
-  const TelaDetailScreen({super.key, required this.tela});
+  const TelaDetailScreen({super.key, required this.telaId});
+
+  @override
+  State<TelaDetailScreen> createState() => _TelaDetailScreenState();
+}
+
+class _TelaDetailScreenState extends State<TelaDetailScreen> {
+  late TelaEntity tela;
+
+  @override
+  void initState() {
+    TelasBloc telaBloc = context.read<TelasBloc>();
+    tela = telaBloc.state.telas!
+        .firstWhere((element) => element.id == widget.telaId);
+    super.initState();
+  }
+
+  String capitalize(String s) {
+    if (s.isEmpty) return s;
+    return s[0].toUpperCase() + s.substring(1).toLowerCase();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -14,68 +36,143 @@ class TelaDetailScreen extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        child: ListView(
           children: [
-            Text(
-              'Denominación: ${tela.denominacion}',
-              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            Card(
+              child: ListTile(
+                title: const Text(
+                  'Denominación',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+                subtitle: Text(capitalize(tela.denominacion)),
+              ),
             ),
             const SizedBox(height: 10),
-            Text(
-              'Aplicaciones Tela: ${tela.aplicacionesTela.map((e) => e['nombre']).join(', ')}',
-              style: const TextStyle(fontSize: 16),
+            Card(
+              child: ListTile(
+                title: const Text(
+                  'Aplicaciones Tela',
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                ),
+                subtitle: Text(tela.aplicacionesTela
+                    .map((e) => capitalize(e['tipo_aplicacion']))
+                    .join(', ')),
+              ),
             ),
             const SizedBox(height: 10),
-            Text(
-              'Tipo Estructurales: ${tela.tipoEstructurales.map((e) => e['nombre']).join(', ')}',
-              style: const TextStyle(fontSize: 16),
+            Card(
+              child: ListTile(
+                title: const Text(
+                  'Tipo Estructurales',
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                ),
+                subtitle: Text(tela.tipoEstructurales
+                    .map((e) => capitalize(e['tipo']))
+                    .join(', ')),
+              ),
             ),
             const SizedBox(height: 10),
-            Text(
-              'Composiciones: ${tela.composiciones.map((e) => e['nombre']).join(', ')}',
-              style: const TextStyle(fontSize: 16),
+            Card(
+              child: ListTile(
+                title: const Text(
+                  'Composiciones',
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                ),
+                subtitle: Text(tela.composiciones
+                    .map((e) => capitalize(e['descripcion']))
+                    .join(', ')),
+              ),
             ),
             const SizedBox(height: 10),
-            Text(
-              'Conservaciones: ${tela.conservaciones.map((e) => e['nombre']).join(', ')}',
-              style: const TextStyle(fontSize: 16),
+            Card(
+              child: ListTile(
+                title: const Text(
+                  'Conservaciones',
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                ),
+                subtitle: Text(tela.conservaciones
+                    .map((e) => capitalize(e['description']))
+                    .join(', ')),
+              ),
             ),
             const SizedBox(height: 10),
-            Text(
-              'Estructura Ligamentos: ${tela.estructuraLigamentos.map((e) => e['nombre']).join(', ')}',
-              style: const TextStyle(fontSize: 16),
+            Card(
+              child: ListTile(
+                title: const Text(
+                  'Estructura Ligamentos',
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                ),
+                subtitle: Text(tela.estructuraLigamentos
+                    .map((e) => capitalize(e['descripcion']))
+                    .join(', ')),
+              ),
             ),
             const SizedBox(height: 10),
-            // Text(
-            //   'Transparencia: ${transparenciaToString(tela.caracteristicasVisuales)}',
-            //   style: const TextStyle(fontSize: 16),
-            // ),
-            // const SizedBox(height: 10),
-            // Text(
-            //   'Brillo: ${brilloToString(tela.brillo)}',
-            //   style: const TextStyle(fontSize: 16),
-            // ),
-            // const SizedBox(height: 10),
-            // Text(
-            //   'Tacto: ${tactoToString(tela.tacto)}',
-            //   style: const TextStyle(fontSize: 16),
-            // ),
-            // const SizedBox(height: 10),
-            // Text(
-            //   'Resistencia: ${resistenciaToString(tela.resistencia)}',
-            //   style: const TextStyle(fontSize: 16),
-            // ),
-            // const SizedBox(height: 10),
-            // Text(
-            //   'Absorción: ${absorcionToString(tela.absorcion)}',
-            //   style: const TextStyle(fontSize: 16),
-            // ),
-            // const SizedBox(height: 10),
-            // Text(
-            //   'Elasticidad: ${elasticidadToString(tela.elasticidad)}',
-            //   style: const TextStyle(fontSize: 16),
-            // ),
+            Card(
+              child: ListTile(
+                title: const Text(
+                  'Transparencia',
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                ),
+                subtitle: Text(transparenciaToString(
+                    tela.caracteristicasVisuales[0]['transparencia'])),
+              ),
+            ),
+            const SizedBox(height: 10),
+            Card(
+              child: ListTile(
+                title: const Text(
+                  'Brillo',
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                ),
+                subtitle: Text(
+                    brilloToString(tela.caracteristicasVisuales[0]['brillo'])),
+              ),
+            ),
+            const SizedBox(height: 10),
+            Card(
+              child: ListTile(
+                title: const Text(
+                  'Tacto',
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                ),
+                subtitle: Text(
+                    tactoToString(tela.caracteristicasVisuales[0]['tacto'])),
+              ),
+            ),
+            const SizedBox(height: 10),
+            Card(
+              child: ListTile(
+                title: const Text(
+                  'Resistencia',
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                ),
+                subtitle: Text(resistenciaToString(
+                    tela.caracteristicasTecnicas[0]['resistencia'])),
+              ),
+            ),
+            const SizedBox(height: 10),
+            Card(
+              child: ListTile(
+                title: const Text(
+                  'Absorción',
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                ),
+                subtitle: Text(absorcionToString(
+                    tela.caracteristicasTecnicas[0]['absorcion'])),
+              ),
+            ),
+            const SizedBox(height: 10),
+            Card(
+              child: ListTile(
+                title: const Text(
+                  'Elasticidad',
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                ),
+                subtitle: Text(elasticidadToString(
+                    tela.caracteristicasTecnicas[0]['elasticidad'])),
+              ),
+            ),
           ],
         ),
       ),

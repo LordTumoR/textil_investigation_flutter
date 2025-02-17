@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:textil_investigation/presentations/blocs/telas/telas_bloc.dart';
 import 'package:textil_investigation/presentations/blocs/telas/telas_event.dart';
 import 'package:textil_investigation/presentations/blocs/telas/telas_state.dart';
-import 'package:textil_investigation/presentations/funcionalities/searc_function.dart';
 
 class SearchTextWidget extends StatefulWidget {
   const SearchTextWidget({super.key});
@@ -78,16 +78,18 @@ class _SearchTextWidgetState extends State<SearchTextWidget> {
                     return ListView.builder(
                       itemCount: state.telas?.length,
                       itemBuilder: (context, index) {
-                        final fabric = state.telas?[index];
-                        return ListTile(
-                          leading: const Icon(Icons.search, color: Colors.blue),
-                          title: Text(
-                            fabric!.name,
-                            style: const TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 16,
-                            ),
-                          ),
+                      final fabric = state.telas?[index];
+                      return GestureDetector(
+                        onTap: () {
+                          context.go('/home/tela/${fabric.id}');
+                        },
+                        child: ListTile(
+                        leading: const Icon(Icons.search, color: Colors.blue),
+                        title: Text(
+                          fabric!.name,
+                          style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
                           onTap: () {
                             // showFabricDialog(context, {
                             //   'name': fabric.name,

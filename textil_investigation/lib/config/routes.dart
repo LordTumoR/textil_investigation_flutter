@@ -1,6 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:textil_investigation/presentations/screens/home_screen.dart';
 import 'package:textil_investigation/presentations/screens/start_screen.dart';
+import 'package:textil_investigation/presentations/screens/tela_screen.dart';
 import 'package:textil_investigation/presentations/screens/telas_screen.dart';
 
 final GoRouter router = GoRouter(
@@ -15,9 +16,15 @@ final GoRouter router = GoRouter(
       builder: (context, state) => const HomeScreen(),
       routes: [
         GoRoute(
-          path: '/visuals',
+          path: '/telas',
           builder: (context, state) => const TelaScreen(),
-        )
+        ),
+        GoRoute(
+            path: '/tela/:id',
+            builder: (context, state) {
+              final telaId = int.parse(state.pathParameters['id']!);
+              return TelaDetailScreen(telaId: telaId);
+            }),
       ],
     ),
   ],

@@ -33,7 +33,6 @@ class TelasRemoteDataSourceImpl implements TelasRemoteDataSource {
       "transparency": filters['transparency'] ?? null,
       "brightness": filters['brightness'] ?? null,
     };
-
     final response = await client.post(
       uri,
       headers: {'Content-Type': 'application/json'},
