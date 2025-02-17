@@ -15,15 +15,15 @@ class _VisualsWidgetState extends State<VisualsWidget> {
   double transparency = 1;
   double brightness = 1;
 
-    @override
-    void didChangeDependencies() {
-      super.didChangeDependencies();
-      final state = context.watch<TelasBloc>().state;
-      if (state is TelasLoaded) {
-        transparency = state.transparency ?? 1.0;
-        brightness = state.shine ?? 1.0;
-      }
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    final state = context.watch<TelasBloc>().state;
+    if (state is TelasLoaded) {
+      transparency = state.transparency ?? 1.0;
+      brightness = state.shine ?? 1.0;
     }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -62,9 +62,9 @@ class _VisualsWidgetState extends State<VisualsWidget> {
                   onPressed: () {
                     context.read<TelasBloc>().add(
                           UpdateTelasEvent(
-                            transparency: transparency,
-                            shine: brightness,
-                          ),
+                              transparency: transparency,
+                              shine: brightness,
+                              isAnadirOrBuscar: true),
                         );
                   },
                   style: ElevatedButton.styleFrom(
@@ -83,9 +83,9 @@ class _VisualsWidgetState extends State<VisualsWidget> {
                   onPressed: () {
                     context.read<TelasBloc>().add(
                           UpdateTelasEvent(
-                            transparency: transparency,
-                            shine: brightness,
-                          ),
+                              transparency: transparency,
+                              shine: brightness,
+                              isAnadirOrBuscar: false),
                         );
                   },
                   style: ElevatedButton.styleFrom(

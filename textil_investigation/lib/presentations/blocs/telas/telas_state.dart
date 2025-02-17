@@ -25,6 +25,7 @@ class TelasLoaded extends TelasState {
   final bool? isWaterResistant;
   final bool? isStainResistant;
   final bool? isFireRetardant;
+  final bool? isAnadirOrBuscar;
   final List<TelaEntity>? telas;
 
   const TelasLoaded({
@@ -36,6 +37,7 @@ class TelasLoaded extends TelasState {
     this.isWaterResistant,
     this.isStainResistant,
     this.isFireRetardant,
+    this.isAnadirOrBuscar,
     this.telas,
   });
 

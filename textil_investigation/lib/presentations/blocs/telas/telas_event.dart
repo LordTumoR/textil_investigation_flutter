@@ -15,6 +15,7 @@ class UpdateTelasEvent extends TelasEvent {
   final bool? isWaterResistant;
   final bool? isStainResistant;
   final bool? isFireRetardant;
+  final bool? isAnadirOrBuscar;
 
   UpdateTelasEvent({
     this.transparency,
@@ -25,6 +26,7 @@ class UpdateTelasEvent extends TelasEvent {
     this.isWaterResistant,
     this.isStainResistant,
     this.isFireRetardant,
+    this.isAnadirOrBuscar,
   });
 
   @override
@@ -37,6 +39,7 @@ class UpdateTelasEvent extends TelasEvent {
         isWaterResistant,
         isStainResistant,
         isFireRetardant,
+        isAnadirOrBuscar,
       ];
 }
 
