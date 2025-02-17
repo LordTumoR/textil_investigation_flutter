@@ -20,6 +20,7 @@ class TelasLoaded extends TelasState {
   final String? name;
   final double? transparency;
   final double? shine;
+  final double? touch;
   final double? endurance;
   final double? absorption;
   final double? elasticity;
@@ -33,6 +34,7 @@ class TelasLoaded extends TelasState {
     this.name,
     this.transparency,
     this.shine,
+    this.touch,
     this.endurance,
     this.absorption,
     this.elasticity,
@@ -48,6 +50,7 @@ class TelasLoaded extends TelasState {
         name,
         transparency,
         shine,
+        touch,
         endurance,
         absorption,
         elasticity,
@@ -58,6 +61,7 @@ class TelasLoaded extends TelasState {
       ];
 }
 
+
 /// ✅ **Estado cuando ocurre un error**
 class TelasError extends TelasState {
   final String message;
@@ -67,3 +71,4 @@ class TelasError extends TelasState {
   @override
   List<Object?> get props => [message];
 }
+

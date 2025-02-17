@@ -55,7 +55,6 @@ class _HomeScreenState extends State<HomeScreen> {
         if (state is IndexLoaded) {
           currentIndex = state.number; // Obtén el índice del estado
         }
-
         return Scaffold(
           appBar: DefaultAppBar(),
           body: _getBody(currentIndex),

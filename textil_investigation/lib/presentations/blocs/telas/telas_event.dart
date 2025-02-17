@@ -10,6 +10,7 @@ class UpdateTelasEvent extends TelasEvent {
   final String? name;
   final double? transparency;
   final double? shine;
+  final double? touch;
   final double? endurance;
   final double? absorption;
   final double? elasticity;
@@ -22,6 +23,7 @@ class UpdateTelasEvent extends TelasEvent {
     this.name,
     this.transparency,
     this.shine,
+    this.touch,
     this.endurance,
     this.absorption,
     this.elasticity,
@@ -36,6 +38,7 @@ class UpdateTelasEvent extends TelasEvent {
         name,
         transparency,
         shine,
+        touch,
         endurance,
         absorption,
         elasticity,

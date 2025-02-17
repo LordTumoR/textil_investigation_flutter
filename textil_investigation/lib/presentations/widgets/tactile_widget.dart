@@ -42,6 +42,8 @@ class TactileWidget extends StatelessWidget {
                           UpdateTelasEvent(endurance: value),
                         );
                   },
+                  minText: 'Baja',
+                  maxText: 'Alta',
                 ),
                 _buildSlider(
                   context,
@@ -52,6 +54,8 @@ class TactileWidget extends StatelessWidget {
                           UpdateTelasEvent(absorption: value),
                         );
                   },
+                  minText: 'Higroscópico',
+                  maxText: 'Absorbente',
                 ),
                 _buildSlider(
                   context,
@@ -62,6 +66,8 @@ class TactileWidget extends StatelessWidget {
                           UpdateTelasEvent(elasticity: value),
                         );
                   },
+                  minText: 'Baja',
+                  maxText: 'Alta',
                 ),
                 const SizedBox(height: 40),
                 ElevatedButton(
@@ -122,6 +128,8 @@ class TactileWidget extends StatelessWidget {
     required String label,
     required double value,
     required ValueChanged<double> onChanged,
+    required String minText,
+    required String maxText,
   }) {
     return Column(
       children: [
@@ -138,11 +146,11 @@ class TactileWidget extends StatelessWidget {
           label: value.toStringAsFixed(1),
           onChanged: onChanged,
         ),
-        const Row(
+         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text('Poca', style: TextStyle(fontSize: 16)),
-            Text('Mucha', style: TextStyle(fontSize: 16)),
+            Text(minText, style: const TextStyle(fontSize: 16)),
+            Text(maxText, style: const TextStyle(fontSize: 16)),
           ],
         ),
         const SizedBox(height: 20),
