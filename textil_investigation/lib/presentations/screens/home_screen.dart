@@ -87,7 +87,7 @@ class _HomeScreenState extends State<HomeScreen> {
       case 3:
         return const TactileWidget();
       case 4:
-        return SearchTextWidget(fabrics: fabrics);
+        return const SearchTextWidget();
       case 5:
         return const OtherCharacteristicsWidget();
       default:

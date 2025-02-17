@@ -17,6 +17,7 @@ class TelasLoading extends TelasState {}
 
 /// ✅ **Estado que almacena los datos de las telas y los filtros aplicados**
 class TelasLoaded extends TelasState {
+  final String? name;
   final double? transparency;
   final double? shine;
   final double? endurance;
@@ -29,6 +30,7 @@ class TelasLoaded extends TelasState {
   final List<TelaEntity>? telas;
 
   const TelasLoaded({
+    this.name,
     this.transparency,
     this.shine,
     this.endurance,
@@ -43,6 +45,7 @@ class TelasLoaded extends TelasState {
 
   @override
   List<Object?> get props => [
+        name,
         transparency,
         shine,
         endurance,

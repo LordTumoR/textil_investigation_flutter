@@ -8,7 +8,7 @@ class TelasBloc extends Bloc<TelasEvent, TelasState> {
   final FetchFilteredTelasUseCase fetchFilteredTelasUseCase;
 
   TelasBloc({required this.fetchFilteredTelasUseCase})
-      : super(const TelasLoaded()) {
+      : super(const TelasLoaded(telas: [])) {
     on<UpdateTelasEvent>(_onUpdateTelas);
   }
 
@@ -19,6 +19,7 @@ class TelasBloc extends Bloc<TelasEvent, TelasState> {
 
       emit(
         TelasLoaded(
+          name: event.name ?? currentState.name,
           transparency: event.transparency ?? currentState.transparency,
           shine: event.shine ?? currentState.shine,
           endurance: event.endurance ?? currentState.endurance,
@@ -36,6 +37,7 @@ class TelasBloc extends Bloc<TelasEvent, TelasState> {
       );
 
       final filters = {
+        'name': event.name ?? currentState.name,
         'transparency': event.transparency ?? currentState.transparency,
         'brightness': event.shine ?? currentState.shine,
         'endurance': event.endurance ?? currentState.endurance,
@@ -53,6 +55,7 @@ class TelasBloc extends Bloc<TelasEvent, TelasState> {
         final telas = await fetchFilteredTelasUseCase(filters);
         emit(
           TelasLoaded(
+            name: currentState.name,
             transparency: currentState.transparency,
             shine: currentState.shine,
             endurance: currentState.endurance,

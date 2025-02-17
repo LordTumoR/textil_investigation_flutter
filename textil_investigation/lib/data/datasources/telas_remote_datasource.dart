@@ -16,7 +16,7 @@ class TelasRemoteDataSourceImpl implements TelasRemoteDataSource {
       Map<String, dynamic> filters) async {
     // Construimos el objeto de filtros aquí
     final Map<String, dynamic> filterParams = {
-      "denominacion": filters['denominacion'] ?? null,
+      "denominacion": filters['name'] ?? null,
       "ids_aplicaciones": filters['ids_aplicaciones'] ?? null,
       "ids_tipo_estructural": filters['ids_tipo_estructural'] ?? null,
       "ids_composicion": filters['ids_composicion'] ?? null,

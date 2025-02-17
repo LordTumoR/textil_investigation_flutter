@@ -7,6 +7,7 @@ abstract class TelasEvent extends Equatable {
 
 /// ✅ **Evento para actualizar los filtros**
 class UpdateTelasEvent extends TelasEvent {
+  final String? name;
   final double? transparency;
   final double? shine;
   final double? endurance;
@@ -18,6 +19,7 @@ class UpdateTelasEvent extends TelasEvent {
   final bool? isAnadirOrBuscar;
 
   UpdateTelasEvent({
+    this.name,
     this.transparency,
     this.shine,
     this.endurance,
@@ -31,6 +33,7 @@ class UpdateTelasEvent extends TelasEvent {
 
   @override
   List<Object?> get props => [
+        name,
         transparency,
         shine,
         endurance,
