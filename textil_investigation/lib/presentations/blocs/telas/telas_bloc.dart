@@ -1,5 +1,4 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:textil_investigation/domain/entities/tela_entity.dart';
 import 'package:textil_investigation/domain/usecases/fetch_filtered_telas_usecase.dart';
 import 'telas_event.dart';
 import 'telas_state.dart';

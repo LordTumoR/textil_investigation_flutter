@@ -13,7 +13,7 @@ class TelasRemoteDataSourceImpl implements TelasRemoteDataSource {
 
   @override
   Future<List<TelaModel>> fetchFilteredTelas(Map<String, dynamic> filters) async {
-    final uri = Uri.parse('http://10.250.77.107:8000/telas/filter/telas');
+    final uri = Uri.parse('http://localhost:8000/telas/filter/telas');
     final response = await client.post(
       uri,
       headers: {'Content-Type': 'application/json'},

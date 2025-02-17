@@ -14,6 +14,7 @@ class VisualsWidget extends StatefulWidget {
 class _VisualsWidgetState extends State<VisualsWidget> {
   double transparency = 1;
   double brightness = 1;
+  double tacto = 1;
 
     @override
     void didChangeDependencies() {
@@ -55,6 +56,14 @@ class _VisualsWidgetState extends State<VisualsWidget> {
                   value: brightness,
                   onChanged: (value) {
                     setState(() => brightness = value);
+                  },
+                ),
+                _buildSlider(
+                  context,
+                  label: 'Tacto',
+                  value: tacto,
+                  onChanged: (value) {
+                    setState(() => tacto = value);
                   },
                 ),
                 const SizedBox(height: 40),

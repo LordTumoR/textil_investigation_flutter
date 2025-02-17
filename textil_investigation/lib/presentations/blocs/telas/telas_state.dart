@@ -19,6 +19,7 @@ class TelasLoading extends TelasState {}
 class TelasLoaded extends TelasState {
   final double? transparency;
   final double? shine;
+  final double? touch;
   final double? endurance;
   final double? absorption;
   final double? elasticity;
@@ -30,6 +31,7 @@ class TelasLoaded extends TelasState {
   const TelasLoaded({
     this.transparency,
     this.shine,
+    this.touch,
     this.endurance,
     this.absorption,
     this.elasticity,
@@ -43,6 +45,7 @@ class TelasLoaded extends TelasState {
   List<Object?> get props => [
         transparency,
         shine,
+        touch,
         endurance,
         absorption,
         elasticity,
