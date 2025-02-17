@@ -8,12 +8,10 @@ class TelasBloc extends Bloc<TelasEvent, TelasState> {
   final FetchFilteredTelasUseCase fetchFilteredTelasUseCase;
 
   TelasBloc({required this.fetchFilteredTelasUseCase})
-      : super(const TelasLoaded()) {
+      : super(const TelasLoaded(telas: [])) {
     on<UpdateTelasEvent>(_onUpdateTelas);
-    on<FetchFilteredTelasEvent>(_onFetchFilteredTelas);
   }
 
-  /// ✅ **Actualiza los valores de los filtros sin afectar otros valores**
   Future<void> _onUpdateTelas(
       UpdateTelasEvent event, Emitter<TelasState> emit) async {
     if (state is TelasLoaded) {
@@ -21,43 +19,53 @@ class TelasBloc extends Bloc<TelasEvent, TelasState> {
 
       emit(
         TelasLoaded(
+          name: event.name ?? currentState.name,
           transparency: event.transparency ?? currentState.transparency,
           shine: event.shine ?? currentState.shine,
+          touch: event.touch ?? currentState.touch,
           endurance: event.endurance ?? currentState.endurance,
           absorption: event.absorption ?? currentState.absorption,
           elasticity: event.elasticity ?? currentState.elasticity,
           composition: event.composition ?? currentState.composition,
           telas:
               currentState.telas, // Mantiene las telas obtenidas anteriormente
+
         ),
       );
-    }
-  }
 
-  /// ✅ **Hace la petición para obtener telas filtradas y actualiza el estado**
-  Future<void> _onFetchFilteredTelas(
-      FetchFilteredTelasEvent event, Emitter<TelasState> emit) async {
-    emit(TelasLoading());
-    try {
-      final telas = await fetchFilteredTelasUseCase(event.filters);
-      if (state is TelasLoaded) {
-        final currentState = state as TelasLoaded;
+      final filters = {
+        'name': event.name ?? currentState.name,
+        'transparency': event.transparency ?? currentState.transparency,
+        'brightness': event.shine ?? currentState.shine,
+        'touch': event.touch ?? currentState.touch,
+        'endurance': event.endurance ?? currentState.endurance,
+        'absorption': event.absorption ?? currentState.absorption,
+        'elasticity': event.elasticity ?? currentState.elasticity,
+        'isWaterResistant':
+            event.isWaterResistant ?? currentState.isWaterResistant,
+        'isStainResistant':
+            event.isStainResistant ?? currentState.isStainResistant,
+        'isFireRetardant':
+            event.isFireRetardant ?? currentState.isFireRetardant,
+      };
+
+      if (event.isAnadirOrBuscar == true) {
+        final telas = await fetchFilteredTelasUseCase(filters);
         emit(
           TelasLoaded(
+            name: currentState.name,
             transparency: currentState.transparency,
             shine: currentState.shine,
+            touch: currentState.touch,
             endurance: currentState.endurance,
             absorption: currentState.absorption,
             elasticity: currentState.elasticity,
             composition: currentState.composition,
             telas: telas, // Guarda las telas obtenidas en el estado
+
           ),
         );
-      } else {
-        emit(TelasLoaded(telas: telas));
       }
-    } catch (e) {
-      emit(TelasError('Error al obtener telas'));
     }
   }
 }

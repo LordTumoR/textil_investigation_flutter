@@ -55,7 +55,6 @@ class _HomeScreenState extends State<HomeScreen> {
         if (state is IndexLoaded) {
           currentIndex = state.number; // Obtén el índice del estado
         }
-
         return Scaffold(
           appBar: DefaultAppBar(),
           body: _getBody(currentIndex),
@@ -87,7 +86,7 @@ class _HomeScreenState extends State<HomeScreen> {
       case 3:
         return const TactileWidget();
       case 4:
-        return SearchTextWidget(fabrics: fabrics);
+        return const SearchTextWidget();
       case 5:
         return const OtherCharacteristicsWidget();
       default:

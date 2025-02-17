@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:textil_investigation/presentations/blocs/telas/telas_bloc.dart';
+import 'package:textil_investigation/presentations/blocs/telas/telas_event.dart';
+import 'package:textil_investigation/presentations/blocs/telas/telas_state.dart';
 import 'package:textil_investigation/presentations/funcionalities/searc_function.dart';
 
 class SearchTextWidget extends StatefulWidget {
-  final List<Map<String, String>> fabrics;
-
-  const SearchTextWidget({super.key, required this.fabrics});
+  const SearchTextWidget({super.key});
 
   @override
   State<SearchTextWidget> createState() => _SearchTextWidgetState();
@@ -13,7 +15,13 @@ class SearchTextWidget extends StatefulWidget {
 class _SearchTextWidgetState extends State<SearchTextWidget> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _nombreController = TextEditingController();
-  List<Map<String, String>> _searchResults = [];
+  @override
+  void initState() {
+    super.initState();
+    context
+        .read<TelasBloc>()
+        .add(UpdateTelasEvent(name: null, isAnadirOrBuscar: true));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,71 +52,57 @@ class _SearchTextWidgetState extends State<SearchTextWidget> {
                   return null;
                 },
                 onChanged: (text) {
-                  setState(() {
-                    _searchResults = searchFabrics(text, widget.fabrics);
-                  });
+                  final upperCaseText = text.toUpperCase();
+                  context.read<TelasBloc>().add(UpdateTelasEvent(
+                      name: upperCaseText, isAnadirOrBuscar: true));
                 },
               ),
             ),
-            ElevatedButton(
-              onPressed: () {
-                if (_formKey.currentState!.validate()) {
-                  setState(() {
-                    _searchResults = searchFabrics(
-                      _nombreController.text,
-                      widget.fabrics,
-                    );
-                  });
-                }
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: const Color(0xFF00B0B9),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-              ),
-              child: const Text(
-                'Buscar',
-                style: TextStyle(color: Colors.white),
-              ),
-            ),
             Expanded(
-              child: _searchResults.isNotEmpty
-                  ? ListView.builder(
-                      itemCount: _searchResults.length,
+              child: BlocBuilder<TelasBloc, TelasState>(
+                builder: (context, state) {
+                  if (state is TelasLoaded) {
+                    if (state.telas == null &&
+                        _nombreController.text.isNotEmpty &&
+                        state.name == null) {
+                      return const Center(
+                        child: Text(
+                          'No se encontraron resultados.',
+                          style: TextStyle(
+                              color: Color.fromARGB(255, 0, 0, 0),
+                              fontSize: 16),
+                        ),
+                      );
+                    }
+
+                    return ListView.builder(
+                      itemCount: state.telas?.length,
                       itemBuilder: (context, index) {
-                        final fabric = _searchResults[index];
+                        final fabric = state.telas?[index];
                         return ListTile(
-                          leading: const Icon(
-                            Icons.search,
-                            color: Colors.blue,
-                          ),
+                          leading: const Icon(Icons.search, color: Colors.blue),
                           title: Text(
-                            fabric['name']!,
+                            fabric!.name,
                             style: const TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 16,
                             ),
                           ),
-                          onTap: () {
-                            showFabricDialog(context, fabric);
-                          },
                         );
                       },
-                    )
-                  : Center(
-                      child: _nombreController.text.isNotEmpty
-                          ? const Text(
-                              'No se encontraron resultados.',
-                              style: TextStyle(
-                                color: Colors.red,
-                                fontSize: 16,
-                              ),
-                            )
-                          : const Text(
-                              'Ingrese un nombre para buscar telas.',
-                            ),
-                    ),
+                    );
+                  } else if (state is TelasError) {
+                    return Center(
+                      child: Text(
+                        state.message,
+                        style: const TextStyle(color: Colors.red, fontSize: 16),
+                      ),
+                    );
+                  }
+
+                  return const Center(child: CircularProgressIndicator());
+                },
+              ),
             ),
           ],
         ),

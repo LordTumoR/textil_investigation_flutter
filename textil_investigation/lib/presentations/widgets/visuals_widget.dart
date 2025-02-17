@@ -14,16 +14,17 @@ class VisualsWidget extends StatefulWidget {
 class _VisualsWidgetState extends State<VisualsWidget> {
   double transparency = 1;
   double brightness = 1;
+  double touch = 1;
 
-    @override
-    void didChangeDependencies() {
-      super.didChangeDependencies();
-      final state = context.watch<TelasBloc>().state;
-      if (state is TelasLoaded) {
-        transparency = state.transparency ?? 1.0;
-        brightness = state.shine ?? 1.0;
-      }
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    final state = context.watch<TelasBloc>().state;
+    if (state is TelasLoaded) {
+      transparency = state.transparency ?? 1.0;
+      brightness = state.shine ?? 1.0;
     }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,8 +47,10 @@ class _VisualsWidgetState extends State<VisualsWidget> {
                   label: 'Transparencia',
                   value: transparency,
                   onChanged: (value) {
-                    setState(() => transparency = value);
+                  setState(() => transparency = value);
                   },
+                  minText: 'Opaco',
+                  maxText: 'Trasnparente',
                 ),
                 _buildSlider(
                   context,
@@ -56,15 +59,27 @@ class _VisualsWidgetState extends State<VisualsWidget> {
                   onChanged: (value) {
                     setState(() => brightness = value);
                   },
+                  minText: 'Mate',
+                  maxText: 'Brillante',
+                ),
+                _buildSlider(
+                  context,
+                  label: 'Tacto',
+                  value: touch,
+                  onChanged: (value) {
+                    setState(() => touch = value);
+                  },
+                  minText: 'Suave',
+                  maxText: 'Aspero',
                 ),
                 const SizedBox(height: 40),
                 ElevatedButton(
                   onPressed: () {
                     context.read<TelasBloc>().add(
                           UpdateTelasEvent(
-                            transparency: transparency,
-                            shine: brightness,
-                          ),
+                              transparency: transparency,
+                              shine: brightness,
+                              isAnadirOrBuscar: true),
                         );
                   },
                   style: ElevatedButton.styleFrom(
@@ -83,9 +98,10 @@ class _VisualsWidgetState extends State<VisualsWidget> {
                   onPressed: () {
                     context.read<TelasBloc>().add(
                           UpdateTelasEvent(
-                            transparency: transparency,
-                            shine: brightness,
-                          ),
+                              transparency: transparency,
+                              shine: brightness,
+                              touch: touch,
+                              isAnadirOrBuscar: false),
                         );
                   },
                   style: ElevatedButton.styleFrom(
@@ -112,6 +128,8 @@ class _VisualsWidgetState extends State<VisualsWidget> {
     required String label,
     required double value,
     required ValueChanged<double> onChanged,
+    required String minText,
+    required String maxText,
   }) {
     return Column(
       children: [
@@ -128,11 +146,11 @@ class _VisualsWidgetState extends State<VisualsWidget> {
           label: value.toStringAsFixed(1),
           onChanged: onChanged,
         ),
-        const Row(
+        Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text('Poca', style: TextStyle(fontSize: 16)),
-            Text('Mucha', style: TextStyle(fontSize: 16)),
+            Text(minText, style: const TextStyle(fontSize: 16)),
+            Text(maxText, style: const TextStyle(fontSize: 16)),
           ],
         ),
         const SizedBox(height: 20),

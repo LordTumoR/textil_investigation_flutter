@@ -17,28 +17,36 @@ class TelasLoading extends TelasState {}
 
 /// ✅ **Estado que almacena los datos de las telas y los filtros aplicados**
 class TelasLoaded extends TelasState {
+  final String? name;
   final double? transparency;
   final double? shine;
+  final double? touch;
   final double? endurance;
   final double? absorption;
   final double? elasticity;
   final int? composition;
+
   final List<TelaEntity>? telas;
 
   const TelasLoaded({
+    this.name,
     this.transparency,
     this.shine,
+    this.touch,
     this.endurance,
     this.absorption,
     this.elasticity,
     this.composition,
+
     this.telas,
   });
 
   @override
   List<Object?> get props => [
+        name,
         transparency,
         shine,
+        touch,
         endurance,
         absorption,
         elasticity,
@@ -46,6 +54,7 @@ class TelasLoaded extends TelasState {
         telas,
       ];
 }
+
 
 /// ✅ **Estado cuando ocurre un error**
 class TelasError extends TelasState {
@@ -56,3 +65,4 @@ class TelasError extends TelasState {
   @override
   List<Object?> get props => [message];
 }
+

@@ -2,6 +2,7 @@ import 'package:equatable/equatable.dart';
 
 class TelaEntity extends Equatable {
   final int id;
+  final String name;
   final String denominacion;
   final List<Map<String, dynamic>> aplicacionesTela;
   final List<Map<String, dynamic>> tipoEstructurales;
@@ -13,6 +14,7 @@ class TelaEntity extends Equatable {
 
   const TelaEntity({
     required this.id,
+    required this.name,
     required this.denominacion,
     required this.aplicacionesTela,
     required this.tipoEstructurales,
@@ -26,6 +28,7 @@ class TelaEntity extends Equatable {
   @override
   List<Object?> get props => [
         id,
+        name,
         denominacion,
         aplicacionesTela,
         tipoEstructurales,

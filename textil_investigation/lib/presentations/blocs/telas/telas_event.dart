@@ -7,30 +7,38 @@ abstract class TelasEvent extends Equatable {
 
 /// ✅ **Evento para actualizar los filtros**
 class UpdateTelasEvent extends TelasEvent {
+  final String? name;
   final double? transparency;
   final double? shine;
+  final double? touch;
   final double? endurance;
   final double? absorption;
   final double? elasticity;
   final int? composition;
 
   UpdateTelasEvent({
+    this.name,
     this.transparency,
     this.shine,
+    this.touch,
     this.endurance,
     this.absorption,
     this.elasticity,
     this.composition,
+
   });
 
   @override
   List<Object?> get props => [
+        name,
         transparency,
         shine,
+        touch,
         endurance,
         absorption,
         elasticity,
         composition,
+
       ];
 }
 
