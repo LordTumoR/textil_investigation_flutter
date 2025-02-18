@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:textil_investigation/presentations/blocs/index_bloc.dart';
+import 'package:textil_investigation/presentations/blocs/index_event.dart';
 import 'package:textil_investigation/presentations/blocs/telas/telas_bloc.dart';
 import 'package:textil_investigation/presentations/blocs/telas/telas_event.dart';
 import 'package:textil_investigation/presentations/blocs/telas/telas_state.dart';
@@ -83,7 +85,7 @@ class _VisualsWidgetState extends State<VisualsWidget> {
                               touch: touch,
                               isAnadirOrBuscar: true),
                         );
-                      context.go('/home/telas');
+                    context.go('/home/telas');
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFF00B0B9),
@@ -106,6 +108,7 @@ class _VisualsWidgetState extends State<VisualsWidget> {
                               touch: touch,
                               isAnadirOrBuscar: false),
                         );
+                    context.read<IndexBloc>().add(const UpdateNumberEvent(1));
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFFFF00C5),

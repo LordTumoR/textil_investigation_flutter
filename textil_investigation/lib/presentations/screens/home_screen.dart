@@ -90,7 +90,7 @@ class _HomeScreenState extends State<HomeScreen> {
         return const SearchTextWidget();
       case 5:
         return const OtherCharacteristicsWidget();
-      case 6: 
+      case 6:
         return const CameraWidget();
       default:
         return const CustomScreen();
