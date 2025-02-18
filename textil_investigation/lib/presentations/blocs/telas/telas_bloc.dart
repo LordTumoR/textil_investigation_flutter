@@ -28,6 +28,10 @@ class TelasBloc extends Bloc<TelasEvent, TelasState> {
           elasticity: event.elasticity ?? currentState.elasticity,
           composition: event.composition ?? currentState.composition,
           telas: currentState.telas,
+          aplicacion: event.aplicacion ?? currentState.aplicacion,
+          conservacion: event.conservacion ?? currentState.conservacion,
+          estructuraLigamento: event.estructuraLigamento ?? currentState.estructuraLigamento,
+          tipoEstructural: event.tipoEstructural ?? currentState.tipoEstructural,
         ),
       );
 
@@ -38,7 +42,12 @@ class TelasBloc extends Bloc<TelasEvent, TelasState> {
         'touch': event.touch ?? currentState.touch,
         'endurance': event.endurance ?? currentState.endurance,
         'absorption': event.absorption ?? currentState.absorption,
-        'elasticity': event.elasticity ?? currentState.elasticity
+        'elasticity': event.elasticity ?? currentState.elasticity,
+        'composition': event.composition ?? currentState.composition,
+        'aplicacion': event.aplicacion ?? currentState.aplicacion,
+        'conservacion': event.conservacion ?? currentState.conservacion,
+        'estructuraLigamento': event.estructuraLigamento ?? currentState.estructuraLigamento,
+        'tipoEstructural': event.tipoEstructural ?? currentState.tipoEstructural,
       };
 
       if (event.isAnadirOrBuscar == true) {
@@ -53,6 +62,10 @@ class TelasBloc extends Bloc<TelasEvent, TelasState> {
             absorption: currentState.absorption,
             elasticity: currentState.elasticity,
             composition: currentState.composition,
+            aplicacion: currentState.aplicacion,
+            conservacion: currentState.conservacion,
+            estructuraLigamento: currentState.estructuraLigamento,
+            tipoEstructural: currentState.tipoEstructural,
             telas: telas, 
           ),
         );

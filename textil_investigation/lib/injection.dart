@@ -24,7 +24,7 @@ import 'package:textil_investigation/domain/usecases/fetch_conservacion_usecase.
 import 'package:textil_investigation/domain/usecases/fetch_estructura_ligamento_usecase.dart';
 import 'package:textil_investigation/domain/usecases/fetch_filtered_telas_usecase.dart';
 import 'package:textil_investigation/domain/usecases/fetch_tipo_estructural_usecase.dart';
-import 'package:textil_investigation/presentations/blocs/composicion/composicion_bloc.dart';
+import 'package:textil_investigation/presentations/blocs/campos/campos_bloc.dart';
 import 'package:textil_investigation/presentations/blocs/index_bloc.dart';
 import 'package:textil_investigation/presentations/blocs/telas/telas_bloc.dart';
 
@@ -91,7 +91,11 @@ Future<void> configureDependencies() async {
   sl.registerFactory<TelasBloc>(
     () => TelasBloc(fetchFilteredTelasUseCase: sl<FetchFilteredTelasUseCase>()),
   );
-  sl.registerFactory<ComposicionBloc>(() => ComposicionBloc(
+  sl.registerFactory<CamposBloc>(() => CamposBloc(
         fetchComposicionUseCase: sl<FetchComposicionUseCase>(),
+        fetchAplicacionUseCase: sl<FetchAplicacionUseCase>(),
+        fetchConservacionUseCase: sl<FetchConservacionUseCase>(),
+        fetchTipoEstructuralUseCase: sl<FetchTipoEstructuralUseCase>(),
+        fetchEstructuraLigamentoUseCase: sl<FetchEstructuraLigamentoUseCase>(),
       ));
 }
