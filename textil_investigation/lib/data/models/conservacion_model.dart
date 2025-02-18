@@ -8,8 +8,8 @@ class ConservacionModel extends ConservacionEntity {
 
   factory ConservacionModel.fromJson(Map<String, dynamic> json) {
     return ConservacionModel(
-      id: json['id'],
-      descripcion: json['descripcion'],
+      id: json['id'] ?? 0,
+      descripcion: json["description"] ?? '',
     );
   }
 }

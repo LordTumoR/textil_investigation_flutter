@@ -8,8 +8,8 @@ class TipoEstructuralModel extends TipoEstructuralEntity {
 
   factory TipoEstructuralModel.fromJson(Map<String, dynamic> json) {
     return TipoEstructuralModel(
-      id: json['id_tipo_estructural'],
-      descripcion: json['tipo'],
+      id: json['id_tipo_estructural'] ?? 0,
+      descripcion: json['tipo'] ?? '',
     );
   }
 }

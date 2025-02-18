@@ -15,6 +15,10 @@ class UpdateTelasEvent extends TelasEvent {
   final double? absorption;
   final double? elasticity;
   final int? composition;
+  final int? aplicacion;
+  final int? conservacion;
+  final int? estructuraLigamento;
+  final int? tipoEstructural;
 
   final bool? isAnadirOrBuscar;
 
@@ -27,7 +31,11 @@ class UpdateTelasEvent extends TelasEvent {
       this.absorption,
       this.elasticity,
       this.isAnadirOrBuscar,
-      this.composition});
+      this.composition, 
+      this.aplicacion,
+      this.conservacion,
+      this.estructuraLigamento,
+      this.tipoEstructural});
 
   @override
   List<Object?> get props => [
@@ -40,6 +48,10 @@ class UpdateTelasEvent extends TelasEvent {
         elasticity,
         isAnadirOrBuscar,
         composition,
+        aplicacion,
+        conservacion,
+        estructuraLigamento,
+        tipoEstructural
       ];
 }
 

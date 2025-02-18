@@ -8,8 +8,8 @@ class AplicacionModel extends AplicacionEntity {
 
   factory AplicacionModel.fromJson(Map<String, dynamic> json) {
     return AplicacionModel(
-      id: json['id_aplicaciones'],
-      descripcion: json['tipo_aplicacion'],
+      id: json['id_aplicaciones'] ?? 0,
+      descripcion: json['tipo_aplicacion'] ?? '',
     );
   }
 }
