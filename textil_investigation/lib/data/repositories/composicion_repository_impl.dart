@@ -9,6 +9,11 @@ class ComposicionRepositoryImpl implements ComposicionRepository {
 
   @override
   Future<List<ComposicionEntity>> fetchComposicion() async {
-    return await remoteDataSource.fetchComposicion();
+    try {
+      final composicionModels = await remoteDataSource.fetchComposicion();
+      return composicionModels.toList();
+    } catch (e) {
+      throw Exception('Error al cargar composiciones');
+    }
   }
 }

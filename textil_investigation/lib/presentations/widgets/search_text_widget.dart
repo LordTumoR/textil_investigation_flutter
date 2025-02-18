@@ -80,21 +80,19 @@ class _SearchTextWidgetState extends State<SearchTextWidget> {
                       itemBuilder: (context, index) {
                         final fabric = state.telas?[index];
                         return GestureDetector(
-                          onTap: () {
-                            context.go('/home/tela/${fabric.id}');
-                          },
-                          child: ListTile(
-                            leading:
-                                const Icon(Icons.search, color: Colors.blue),
-                            title: Text(
-                              fabric!.name,
-                              style: const TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 16,
-                              ),
-                            ),
-                          ),
-                        );
+                            onTap: () {
+                              context.go('/home/tela/${fabric.id}');
+                            },
+                            child: ListTile(
+                                leading: const Icon(Icons.search,
+                                    color: Colors.blue),
+                                title: Text(
+                                  fabric!.name,
+                                  style: const TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 16,
+                                  ),
+                                )));
                       },
                     );
                   } else if (state is TelasError) {
