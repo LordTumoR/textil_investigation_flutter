@@ -5,7 +5,7 @@ import 'package:textil_investigation/domain/repositories/conservacion_repository
 class ConservacionRepositoryImpl implements ConservacionRepository {
   final ConservacionRemoteDataSource remoteDataSource;
 
-  ConservacionRepositoryImpl(this.remoteDataSource);
+  ConservacionRepositoryImpl({required this.remoteDataSource});
 
   @override
   Future<List<ConservacionEntity>> fetchConservacion() async {

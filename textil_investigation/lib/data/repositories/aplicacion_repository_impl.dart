@@ -1,10 +1,11 @@
+import 'package:textil_investigation/data/datasources/aplicacion_remote_datasoruce.dart';
 import 'package:textil_investigation/domain/entities/aplicacion_entity.dart';
-import '../datasources/aplicacion_remote_datasoruce.dart';
+import 'package:textil_investigation/domain/repositories/aplicacion_repository.dart';
 
 class AplicacionRepositoryImpl implements AplicacionRepository {
   final AplicacionRemoteDataSource remoteDataSource;
 
-  AplicacionRepositoryImpl(this.remoteDataSource);
+  AplicacionRepositoryImpl({required this.remoteDataSource});
 
   @override
   Future<List<AplicacionEntity>> fetchAplicacion() async {

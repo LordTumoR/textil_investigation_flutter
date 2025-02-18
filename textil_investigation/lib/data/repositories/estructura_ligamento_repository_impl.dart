@@ -5,12 +5,12 @@ import 'package:textil_investigation/domain/repositories/estructura_ligamento_re
 class EstructuraLigamentoRepositoryImpl implements EstructuraLigamentoRepository {
   final EstructrucaLigamentoRemoteDataSource remoteDataSource;
 
-  EstructuraLigamentoRepositoryImpl(this.remoteDataSource);
+  EstructuraLigamentoRepositoryImpl({required this.remoteDataSource});
 
   @override
   Future<List<EstructuraLigamentoEntity>> fetchEstructuraLigamento() async {
     try {
-      final estructuraLigamentoModels = await remoteDataSource.fetchEstructuraLigamento();
+      final estructuraLigamentoModels = await remoteDataSource.fetchEstructrucaLigamento();
       return estructuraLigamentoModels.toList();
     } catch (e) {
       throw Exception('Error al cargar estructuras de ligamento');
