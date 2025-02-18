@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:textil_investigation/presentations/blocs/telas/telas_bloc.dart';
 import 'package:textil_investigation/presentations/blocs/telas/telas_event.dart';
 import 'package:textil_investigation/presentations/blocs/telas/telas_state.dart';
@@ -73,14 +74,14 @@ class TactileWidget extends StatelessWidget {
                 ElevatedButton(
                   onPressed: () {
                     context.read<TelasBloc>().add(
-                          FetchFilteredTelasEvent(
-                            filters: {
-                              'endurance': endurance,
-                              'absorption': absorption,
-                              'elasticity': elasticity,
-                            },
+                          UpdateTelasEvent(
+                            endurance: endurance,
+                            absorption: absorption,
+                            elasticity: elasticity,
+                            isAnadirOrBuscar: true,
                           ),
                         );
+                        context.go('/home/telas');
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFF00B0B9),
@@ -101,6 +102,7 @@ class TactileWidget extends StatelessWidget {
                             endurance: endurance,
                             absorption: absorption,
                             elasticity: elasticity,
+                            isAnadirOrBuscar: false,
                           ),
                         );
                   },

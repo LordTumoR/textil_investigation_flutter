@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:textil_investigation/presentations/blocs/composicion/composicion_bloc.dart';
 import 'package:textil_investigation/presentations/blocs/composicion/composicion_event.dart';
 import 'package:textil_investigation/presentations/blocs/composicion/composicion_state.dart';
@@ -74,6 +75,7 @@ class OtherCharacteristicsWidgetState
                   context.read<TelasBloc>().add(
                         UpdateTelasEvent(composition: selectedCompositionId),
                       );
+                  context.go('/home/telas');
                 }
               : null, // Deshabilitado si no hay selección
           style: ElevatedButton.styleFrom(

@@ -53,7 +53,7 @@ class TelasBloc extends Bloc<TelasEvent, TelasState> {
             absorption: currentState.absorption,
             elasticity: currentState.elasticity,
             composition: currentState.composition,
-            telas: telas, // Guarda las telas obtenidas en el estado
+            telas: telas, 
           ),
         );
       }

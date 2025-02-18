@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:textil_investigation/presentations/blocs/telas/telas_bloc.dart';
 import 'package:textil_investigation/presentations/blocs/telas/telas_event.dart';
 import 'package:textil_investigation/presentations/blocs/telas/telas_state.dart';
@@ -79,8 +80,10 @@ class _VisualsWidgetState extends State<VisualsWidget> {
                           UpdateTelasEvent(
                               transparency: transparency,
                               shine: brightness,
+                              touch: touch,
                               isAnadirOrBuscar: true),
                         );
+                      context.go('/home/telas');
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFF00B0B9),
