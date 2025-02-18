@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:textil_investigation/presentations/appbar/defaul_app_bar.dart';
 import 'package:textil_investigation/presentations/blocs/telas/telas_bloc.dart';
 import 'package:textil_investigation/presentations/blocs/telas/telas_state.dart';
@@ -33,7 +34,9 @@ class _TelaScreenState extends State<TelaScreen> {
                         ? Image.network(tela.img!)
                         : const Icon(Icons.image_not_supported),
                     title: Text(tela.denominacion),
-                    onTap: () {},
+                    onTap: () {
+                      context.go('/home/tela/${tela.id}');
+                    },
                   );
                 },
               ),
