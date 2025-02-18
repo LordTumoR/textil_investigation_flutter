@@ -78,24 +78,22 @@ class _SearchTextWidgetState extends State<SearchTextWidget> {
                     return ListView.builder(
                       itemCount: state.telas?.length,
                       itemBuilder: (context, index) {
-                      final fabric = state.telas?[index];
-                      return GestureDetector(
-                        onTap: () {
-                          context.go('/home/tela/${fabric.id}');
-                        },
-                        child: ListTile(
-                        leading: const Icon(Icons.search, color: Colors.blue),
-                        title: Text(
-                          fabric!.name,
-                          style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16,
+                        final fabric = state.telas?[index];
+                        return GestureDetector(
                           onTap: () {
-                            // showFabricDialog(context, {
-                            //   'name': fabric.name,
-                            //   'otherData': 'Otros detalles de la tela'
-                            // });
+                            context.go('/home/tela/${fabric.id}');
                           },
+                          child: ListTile(
+                            leading:
+                                const Icon(Icons.search, color: Colors.blue),
+                            title: Text(
+                              fabric!.name,
+                              style: const TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16,
+                              ),
+                            ),
+                          ),
                         );
                       },
                     );

@@ -41,13 +41,13 @@ class _VisualsWidgetState extends State<VisualsWidget> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 const Icon(Icons.visibility, size: 50),
-                const SizedBox(height: 50),
+                const SizedBox(height: 10),
                 _buildSlider(
                   context,
                   label: 'Transparencia',
                   value: transparency,
                   onChanged: (value) {
-                  setState(() => transparency = value);
+                    setState(() => transparency = value);
                   },
                   minText: 'Opaco',
                   maxText: 'Trasnparente',
@@ -72,7 +72,7 @@ class _VisualsWidgetState extends State<VisualsWidget> {
                   minText: 'Suave',
                   maxText: 'Aspero',
                 ),
-                const SizedBox(height: 40),
+                const SizedBox(height: 30),
                 ElevatedButton(
                   onPressed: () {
                     context.read<TelasBloc>().add(

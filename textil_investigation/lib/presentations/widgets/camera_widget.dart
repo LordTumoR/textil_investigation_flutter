@@ -12,10 +12,10 @@ class _CameraWidgetState extends State<CameraWidget> {
   final ImagePicker _picker = ImagePicker();
 
   Future<void> takePicture() async {
-    final XFile? image = await _picker.pickImage(source: ImageSource.camera);
-    if (image != null) {
-      showFeatureUnavailableDialog();
-    }
+    // final XFile? image = await _picker.pickImage(source: ImageSource.camera);
+    // if (image != null) {
+    showFeatureUnavailableDialog();
+    // }
   }
 
   void showFeatureUnavailableDialog() {
