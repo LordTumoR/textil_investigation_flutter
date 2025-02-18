@@ -183,9 +183,14 @@ class OtherCharacteristicsWidgetState
           onPressed: () {
             context.read<TelasBloc>().add(
                   UpdateTelasEvent(
-                    composition: selectedCompositionId,
-                  ),
+                      composition: selectedCompositionId,
+                      aplicacion: selectedAplicacionId,
+                      conservacion: selectedConservacionId,
+                      tipoEstructural: selectedTipoEstructuralId,
+                      estructuraLigamento: selectedEstructuraLigamentoId,
+                      isAnadirOrBuscar: false),
                 );
+            context.read<IndexBloc>().add(const UpdateNumberEvent(1));
           },
           style: ElevatedButton.styleFrom(
             backgroundColor: const Color(0xFFFF00C5),

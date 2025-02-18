@@ -59,16 +59,20 @@ Future<void> configureDependencies() async {
     () => TelasRepositoryImpl(remoteDataSource: sl<TelasRemoteDataSource>()),
   );
   sl.registerLazySingleton<ComposicionRepository>(
-    () => ComposicionRepositoryImpl(remoteDataSource: sl<ComposicionRemoteDataSource>()),
+    () => ComposicionRepositoryImpl(
+        remoteDataSource: sl<ComposicionRemoteDataSource>()),
   );
-  sl.registerLazySingleton<AplicacionRepository>(
-      () => AplicacionRepositoryImpl(remoteDataSource: sl<AplicacionRemoteDataSource>()));
-  sl.registerLazySingleton<ConservacionRepository>(
-      () => ConservacionRepositoryImpl(remoteDataSource: sl<ConservacionRemoteDataSource>()));
-  sl.registerLazySingleton<EstructuraLigamentoRepository>(
-      () => EstructuraLigamentoRepositoryImpl(remoteDataSource: sl<EstructrucaLigamentoRemoteDataSource>()));
-  sl.registerLazySingleton<TipoEstructuralRepository>(
-        () => TipoEstructuralRepositoryImpl(remoteDataSource: sl<TipoEstructuralRemoteDataSource>()));
+  sl.registerLazySingleton<AplicacionRepository>(() => AplicacionRepositoryImpl(
+      remoteDataSource: sl<AplicacionRemoteDataSource>()));
+  sl.registerLazySingleton<ConservacionRepository>(() =>
+      ConservacionRepositoryImpl(
+          remoteDataSource: sl<ConservacionRemoteDataSource>()));
+  sl.registerLazySingleton<EstructuraLigamentoRepository>(() =>
+      EstructuraLigamentoRepositoryImpl(
+          remoteDataSource: sl<EstructrucaLigamentoRemoteDataSource>()));
+  sl.registerLazySingleton<TipoEstructuralRepository>(() =>
+      TipoEstructuralRepositoryImpl(
+          remoteDataSource: sl<TipoEstructuralRemoteDataSource>()));
 
   // 🔹 Use Cases
   sl.registerLazySingleton<FetchFilteredTelasUseCase>(
@@ -81,11 +85,12 @@ Future<void> configureDependencies() async {
       () => FetchAplicacionUseCase(repository: sl<AplicacionRepository>()));
   sl.registerLazySingleton<FetchConservacionUseCase>(
       () => FetchConservacionUseCase(repository: sl<ConservacionRepository>()));
-  sl.registerLazySingleton<FetchEstructuraLigamentoUseCase>(
-      () => FetchEstructuraLigamentoUseCase(repository: sl<EstructuraLigamentoRepository>()));
-  sl.registerLazySingleton<FetchTipoEstructuralUseCase>(
-      () => FetchTipoEstructuralUseCase(repository: sl<TipoEstructuralRepository>()));
-      
+  sl.registerLazySingleton<FetchEstructuraLigamentoUseCase>(() =>
+      FetchEstructuraLigamentoUseCase(
+          repository: sl<EstructuraLigamentoRepository>()));
+  sl.registerLazySingleton<FetchTipoEstructuralUseCase>(() =>
+      FetchTipoEstructuralUseCase(repository: sl<TipoEstructuralRepository>()));
+
   // 🔹 BLoCs
   sl.registerFactory<IndexBloc>(() => IndexBloc());
   sl.registerFactory<TelasBloc>(

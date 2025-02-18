@@ -23,17 +23,24 @@ class TelasRemoteDataSourceImpl implements TelasRemoteDataSource {
     // Construimos el objeto de filtros aquí
     final Map<String, dynamic> filterParams = {
       "denominacion": filters['name'],
-      "ids_aplicaciones": filters['aplicacion'] != null ? [filters['aplicacion']] : null,
-      "ids_tipo_estructural": filters['tipoEstructural'] != null ? [filters['tipoEstructural']] : null,
-      "ids_composicion": filters['composition'] != null ? [filters['composition']] : null,
-      "ids_conservacion": filters['conservacion'] != null ? [filters['conservacion']] : null,
-      "ids_estructura_ligamento": filters['estructuraLigamento'] != null ? [filters['estructuraLigamento']] : null,
-      "cac_tecnicas": (filters['transparency'] == null &&
+      "ids_aplicaciones":
+          filters['aplicacion'] != null ? [filters['aplicacion']] : null,
+      "ids_tipo_estructural": filters['tipoEstructural'] != null
+          ? [filters['tipoEstructural']]
+          : null,
+      "ids_composicion":
+          filters['composition'] != null ? [filters['composition']] : null,
+      "ids_conservacion":
+          filters['conservacion'] != null ? [filters['conservacion']] : null,
+      "ids_estructura_ligamento": filters['estructuraLigamento'] != null
+          ? [filters['estructuraLigamento']]
+          : null,
+      "cac_visuales": (filters['transparency'] == null &&
               filters['brightness'] == null &&
               filters['touch'] == null)
           ? null
           : [filters['transparency'], filters['brightness'], filters['touch']],
-      "cac_visuales": (filters['endurance'] == null &&
+      "cac_tecnicas": (filters['endurance'] == null &&
               filters['absorption'] == null &&
               filters['elasticity'] == null)
           ? null

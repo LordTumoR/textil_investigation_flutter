@@ -25,6 +25,9 @@ class DefaultBottomNavigationBar extends StatelessWidget {
       onTap: (index) {
         bool updatedShowCaracteristicsWidget = showCaracteristicsWidget;
         bool updatedShowTextWidget = showTextWidget;
+        if (index == 2) {
+          return;
+        }
         if (index == 0) {}
         onTap(index, updatedShowCaracteristicsWidget, updatedShowTextWidget);
       },
@@ -35,7 +38,7 @@ class DefaultBottomNavigationBar extends StatelessWidget {
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.apps),
-          label: 'Apps',
+          label: 'Caracteristicas',
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.settings),

@@ -120,7 +120,9 @@ class _CustomScreenState extends State<CustomScreen> {
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             ElevatedButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                context.read<IndexBloc>().add(const UpdateNumberEvent(6));
+                              },
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: const Color(0xFF00B0B9),
                                 shape: RoundedRectangleBorder(

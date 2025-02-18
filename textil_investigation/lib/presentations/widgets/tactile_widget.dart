@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:textil_investigation/presentations/blocs/index_bloc.dart';
+import 'package:textil_investigation/presentations/blocs/index_event.dart';
 import 'package:textil_investigation/presentations/blocs/telas/telas_bloc.dart';
 import 'package:textil_investigation/presentations/blocs/telas/telas_event.dart';
 import 'package:textil_investigation/presentations/blocs/telas/telas_state.dart';
@@ -33,7 +35,7 @@ class TactileWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 const Icon(Icons.touch_app, size: 50),
-                const SizedBox(height: 50),
+                const SizedBox(height: 10),
                 _buildSlider(
                   context,
                   label: 'Resistencia',
@@ -70,7 +72,7 @@ class TactileWidget extends StatelessWidget {
                   minText: 'Baja',
                   maxText: 'Alta',
                 ),
-                const SizedBox(height: 40),
+                const SizedBox(height: 20),
                 ElevatedButton(
                   onPressed: () {
                     context.read<TelasBloc>().add(
@@ -81,7 +83,7 @@ class TactileWidget extends StatelessWidget {
                             isAnadirOrBuscar: true,
                           ),
                         );
-                        context.go('/home/telas');
+                    context.go('/home/telas');
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFF00B0B9),
@@ -105,6 +107,7 @@ class TactileWidget extends StatelessWidget {
                             isAnadirOrBuscar: false,
                           ),
                         );
+                    context.read<IndexBloc>().add(UpdateNumberEvent(1));
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFFFF00C5),
@@ -148,7 +151,7 @@ class TactileWidget extends StatelessWidget {
           label: value.toStringAsFixed(1),
           onChanged: onChanged,
         ),
-         Row(
+        Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(minText, style: const TextStyle(fontSize: 16)),
