@@ -37,7 +37,12 @@ class _TelaDetailScreenState extends State<TelaDetailScreen> {
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: ListView(
-          children: [
+            children: [
+            if (tela.img != null)
+              Center(child: Image.network(tela.img!))
+            else
+              const Center(child: Icon(Icons.image_not_supported, size: 100)),
+            const SizedBox(height: 10),
             Card(
               child: ListTile(
                 title: const Text(

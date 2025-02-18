@@ -4,6 +4,7 @@ class TelaEntity extends Equatable {
   final int id;
   final String name;
   final String denominacion;
+  final String? img;
   final List<Map<String, dynamic>> aplicacionesTela;
   final List<Map<String, dynamic>> tipoEstructurales;
   final List<Map<String, dynamic>> composiciones;
@@ -16,6 +17,7 @@ class TelaEntity extends Equatable {
     required this.id,
     required this.name,
     required this.denominacion,
+    this.img,
     required this.aplicacionesTela,
     required this.tipoEstructurales,
     required this.composiciones,
@@ -30,6 +32,7 @@ class TelaEntity extends Equatable {
         id,
         name,
         denominacion,
+        img,
         aplicacionesTela,
         tipoEstructurales,
         composiciones,

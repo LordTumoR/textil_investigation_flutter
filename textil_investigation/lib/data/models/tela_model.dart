@@ -1,35 +1,32 @@
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:textil_investigation/domain/entities/tela_entity.dart';
+
+String apiUrl = dotenv.env['direccionApi'] ?? 'localhost';
+String apiPort = dotenv.env['puertoApi'] ?? '3000';
 
 class TelaModel extends TelaEntity {
   const TelaModel({
-    required int id,
-    required String name,
-    required String denominacion,
-    required List<Map<String, dynamic>> aplicacionesTela,
-    required List<Map<String, dynamic>> tipoEstructurales,
-    required List<Map<String, dynamic>> composiciones,
-    required List<Map<String, dynamic>> conservaciones,
-    required List<Map<String, dynamic>> estructuraLigamentos,
-    required List<Map<String, dynamic>> caracteristicasTecnicas,
-    required List<Map<String, dynamic>> caracteristicasVisuales,
-  }) : super(
-          id: id,
-          name: name,
-          denominacion: denominacion,
-          aplicacionesTela: aplicacionesTela,
-          tipoEstructurales: tipoEstructurales,
-          composiciones: composiciones,
-          conservaciones: conservaciones,
-          estructuraLigamentos: estructuraLigamentos,
-          caracteristicasTecnicas: caracteristicasTecnicas,
-          caracteristicasVisuales: caracteristicasVisuales,
-        );
+    required super.id,
+    required super.name,
+    required super.denominacion,
+    super.img,
+    required super.aplicacionesTela,
+    required super.tipoEstructurales,
+    required super.composiciones,
+    required super.conservaciones,
+    required super.estructuraLigamentos,
+    required super.caracteristicasTecnicas,
+    required super.caracteristicasVisuales,
+  });
 
   factory TelaModel.fromJson(Map<String, dynamic> json) {
     return TelaModel(
       id: json['id_tela'],
       name: json['denominacion'],
       denominacion: json['denominacion'],
+      img: json['id_img'] != null
+          ? "http://$apiUrl:$apiPort/files/${json['id_img']}"
+          : null,
       aplicacionesTela:
           List<Map<String, dynamic>>.from(json['aplicaciones_tela']),
       tipoEstructurales:

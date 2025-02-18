@@ -8,7 +8,7 @@ class ComposicionModel extends ComposicionEntity {
 
   factory ComposicionModel.fromJson(Map<String, dynamic> json) {
     return ComposicionModel(
-      id: json['id_tela'],
+      id: json['id'],
       descripcion: json['descripcion'],
     );
   }

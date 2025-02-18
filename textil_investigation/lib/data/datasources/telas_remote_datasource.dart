@@ -22,16 +22,26 @@ class TelasRemoteDataSourceImpl implements TelasRemoteDataSource {
 
     // Construimos el objeto de filtros aquí
     final Map<String, dynamic> filterParams = {
-      "denominacion": filters['name'] ?? null,
-      "ids_aplicaciones": filters['ids_aplicaciones'] ?? null,
-      "ids_tipo_estructural": filters['ids_tipo_estructural'] ?? null,
-      "ids_composicion": filters['ids_composicion'] ?? null,
-      "ids_conservacion": filters['ids_conservacion'] ?? null,
-      "ids_estructura_ligamento": filters['ids_estructura_ligamento'] ?? null,
-      "cac_tecnicas": filters['cac_tecnicas'] ?? null,
-      "cac_visuales": filters['cac_visuales'] ?? null,
-      "transparency": filters['transparency'] ?? null,
-      "brightness": filters['brightness'] ?? null,
+      "denominacion": filters['name'],
+      "ids_aplicaciones": filters['ids_aplicaciones'],
+      "ids_tipo_estructural": filters['ids_tipo_estructural'],
+      "ids_composicion": filters['ids_composicion'],
+      "ids_conservacion": filters['ids_conservacion'],
+      "ids_estructura_ligamento": filters['ids_estructura_ligamento'],
+      "cac_tecnicas": (filters['transparency'] == null &&
+              filters['brightness'] == null &&
+              filters['touch'] == null)
+          ? null
+          : [filters['transparency'], filters['brightness'], filters['touch']],
+      "cac_visuales": (filters['endurance'] == null &&
+              filters['absorption'] == null &&
+              filters['elasticity'] == null)
+          ? null
+          : [
+              filters['endurance'],
+              filters['absorption'],
+              filters['elasticity']
+            ],
     };
     final response = await client.post(
       uri,
