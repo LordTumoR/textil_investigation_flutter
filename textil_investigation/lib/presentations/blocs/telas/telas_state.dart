@@ -29,7 +29,10 @@ class TelasLoaded extends TelasState {
   final double? absorption;
   final double? elasticity;
   final int? composition;
-
+  final int? aplicacion;
+  final int? conservacion;
+  final int? estructuraLigamento;
+  final int? tipoEstructural;
   final List<TelaEntity>? telas;
 
   const TelasLoaded({
@@ -41,7 +44,10 @@ class TelasLoaded extends TelasState {
     this.absorption,
     this.elasticity,
     this.composition,
-
+    this.aplicacion,
+    this.conservacion,
+    this.estructuraLigamento,
+    this.tipoEstructural,
     this.telas,
   });
 
@@ -56,6 +62,10 @@ class TelasLoaded extends TelasState {
         elasticity,
         composition,
         telas,
+        aplicacion,
+        conservacion,
+        estructuraLigamento,
+        tipoEstructural,
       ];
 }
 

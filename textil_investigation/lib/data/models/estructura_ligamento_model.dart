@@ -8,8 +8,8 @@ class EstructuraLigamentoModel extends EstructuraLigamentoEntity {
 
   factory EstructuraLigamentoModel.fromJson(Map<String, dynamic> json) {
     return EstructuraLigamentoModel(
-      id: json['id'],
-      descripcion: json['descripcion'],
+      id: json['id'] ?? 0,
+      descripcion: json['descripcion'] ?? '',
     );
   }
 }

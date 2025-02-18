@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:textil_investigation/config/routes.dart';
 import 'package:textil_investigation/injection.dart';
-import 'package:textil_investigation/presentations/blocs/composicion/composicion_bloc.dart';
+import 'package:textil_investigation/presentations/blocs/campos/campos_bloc.dart';
 import 'package:textil_investigation/presentations/blocs/index_bloc.dart';
 import 'package:textil_investigation/presentations/blocs/telas/telas_bloc.dart';
 
@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(create: (context) => sl<IndexBloc>()),
         BlocProvider(create: (context) => sl<TelasBloc>()),
-        BlocProvider(create: (context) => sl<ComposicionBloc>())
+        BlocProvider(create: (context) => sl<CamposBloc>())
       ],
       child: MaterialApp.router(
         routerConfig: router,

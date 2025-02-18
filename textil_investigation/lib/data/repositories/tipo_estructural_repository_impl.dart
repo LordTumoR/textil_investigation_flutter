@@ -9,6 +9,11 @@ class TipoEstructuralRepositoryImpl implements TipoEstructuralRepository {
 
   @override
   Future<List<TipoEstructuralEntity>> fetchTipoEstructural() async {
-    return await remoteDataSource.fetchTipoEstructural();
+    try {
+      final tipoEstructuralModels = await remoteDataSource.fetchTipoEstructural();
+      return tipoEstructuralModels.toList();
+    } catch (e) {
+      throw Exception('Error al cargar tipos estructurales');
+    }
   }
 }

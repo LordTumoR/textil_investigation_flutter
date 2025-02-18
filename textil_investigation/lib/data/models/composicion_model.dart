@@ -8,8 +8,8 @@ class ComposicionModel extends ComposicionEntity {
 
   factory ComposicionModel.fromJson(Map<String, dynamic> json) {
     return ComposicionModel(
-      id: json['id'],
-      descripcion: json['descripcion'],
+      id: json['id'] ?? 0,
+      descripcion: json['descripcion'] ?? '',
     );
   }
 }
