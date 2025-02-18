@@ -1,6 +1,6 @@
 {
-    "name": "textil_investigation",
-    "short_name": "textil_investigation",
+    "name": "Textil Investigation",
+    "short_name": "Textil Investigation",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

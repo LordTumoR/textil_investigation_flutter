@@ -4,8 +4,6 @@ import 'package:go_router/go_router.dart';
 import 'package:textil_investigation/presentations/blocs/campos/campos_bloc.dart';
 import 'package:textil_investigation/presentations/blocs/campos/campos_event.dart';
 import 'package:textil_investigation/presentations/blocs/campos/campos_state.dart';
-import 'package:textil_investigation/presentations/blocs/index_bloc.dart';
-import 'package:textil_investigation/presentations/blocs/index_event.dart';
 import 'package:textil_investigation/presentations/blocs/telas/telas_bloc.dart';
 import 'package:textil_investigation/presentations/blocs/telas/telas_event.dart';
 
